@@ -1,0 +1,22 @@
+.container {
+  padding: 10px 0;
+  display: flex;
+}
+
+.timers-list {
+  flex: 2;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    min-width: 150px;
+    margin: 5px 10px;
+  }
+}
+
+.new-timer {
+  flex: 1;
+}
+
+.display-timer {
+  flex: 1;
+}

@@ -1,0 +1,4 @@
+<ng-container *ngIf="{timers :timers$|async}as datas">
+  <app-timer-list [timers]="datas.timers"></app-timer-list>
+</ng-container>
+

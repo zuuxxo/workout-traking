@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="display-timer"></div>
+  <div class="timers-list">
+    <button *ngFor="let timer of timers" mat-fab extended color="primary">{{timer.duration|displayByDuration}}</button>
+  </div>
+  <div class="new-timer">
+
+  </div>
+</div>

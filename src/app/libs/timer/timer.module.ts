@@ -9,13 +9,15 @@ import {TimersEffects} from './data/store/timers.effects';
 import {DisplayAllAvailableTimerUseCase} from './domain/features/display-all-available-timer-use-case';
 import {MatButtonModule} from '@angular/material/button';
 import {DisplayByDurationPipe} from './views/shared/pipe/display-by-duration.pipe';
+import { RunningTimerComponent } from './views/running-timer/running-timer.component';
 
 
 @NgModule({
             declarations: [
               TimerContainerComponent,
               TimerListComponent,
-              DisplayByDurationPipe
+              DisplayByDurationPipe,
+              RunningTimerComponent
             ],
             exports:      [
               TimerContainerComponent

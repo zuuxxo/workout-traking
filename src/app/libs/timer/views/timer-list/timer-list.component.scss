@@ -1,10 +1,4 @@
-.container {
-  padding: 10px 0;
-  display: flex;
-}
-
-.timers-list {
-  flex: 2;
+.list {
   justify-content: space-between;
   align-items: center;
   button {
@@ -13,10 +7,3 @@
   }
 }
 
-.new-timer {
-  flex: 1;
-}
-
-.display-timer {
-  flex: 1;
-}

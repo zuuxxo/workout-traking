@@ -1,4 +1,10 @@
-<ng-container *ngIf="{timers :timers$|async}as datas">
-  <app-timer-list [timers]="datas.timers"></app-timer-list>
-</ng-container>
+<div *ngIf="{timers :timers$|async}as datas" class="container">
+  <div class="running-timer">
+
+  </div>
+  <app-timer-list class="timers-list" [timers]="datas.timers"></app-timer-list>
+  <div class="new-timer">
+
+  </div>
+</div>
 

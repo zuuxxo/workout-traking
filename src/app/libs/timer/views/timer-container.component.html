@@ -1,6 +1,6 @@
 <div *ngIf="{timers :timers$|async}as datas" class="container">
   <div class="running-timer">
-
+    <app-running-timer [selectedTimer$]="selectedTimer$"></app-running-timer>
   </div>
   <app-timer-list class="timers-list" [timers]="datas.timers"></app-timer-list>
   <div class="new-timer">

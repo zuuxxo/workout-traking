@@ -1,1 +1,7 @@
-<p>running-timer works!</p>
+<div *ngIf="{selectedTimer :selectedTimer$|async,
+ runningTimer:runningTimer$|async} as datas" class="container">
+
+  <div class="timer"><p>{{datas.runningTimer}}</p></div>
+  <mat-progress-bar class="progress" mode="determinate" [value]="datas.runningTimer|convertToBaseHundred:datas.selectedTimer"></mat-progress-bar>
+
+</div>

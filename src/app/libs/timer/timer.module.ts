@@ -9,7 +9,11 @@ import {TimersEffects} from './data/store/timers.effects';
 import {DisplayAllAvailableTimerUseCase} from './domain/features/display-all-available-timer-use-case';
 import {MatButtonModule} from '@angular/material/button';
 import {DisplayByDurationPipe} from './views/shared/pipe/display-by-duration.pipe';
-import { RunningTimerComponent } from './views/running-timer/running-timer.component';
+import {RunningTimerComponent} from './views/running-timer/running-timer.component';
+import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-case';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ConvertToHundredBasePipe } from './views/shared/pipe/convert-to-hundred-base.pipe';
 
 
 @NgModule({
@@ -17,7 +21,8 @@ import { RunningTimerComponent } from './views/running-timer/running-timer.compo
               TimerContainerComponent,
               TimerListComponent,
               DisplayByDurationPipe,
-              RunningTimerComponent
+              RunningTimerComponent,
+              ConvertToHundredBasePipe
             ],
             exports:      [
               TimerContainerComponent
@@ -27,8 +32,10 @@ import { RunningTimerComponent } from './views/running-timer/running-timer.compo
               StoreModule.forFeature(fromTimers.timersFeatureKey, fromTimers.reducer),
               EffectsModule.forFeature([TimersEffects]),
               MatButtonModule,
+              MatProgressSpinnerModule,
+              MatProgressBarModule,
             ],
-            providers:    [DisplayAllAvailableTimerUseCase]
+            providers:    [DisplayAllAvailableTimerUseCase, RunSelectedTimerUseCase]
           })
 export class TimerModule {
 }

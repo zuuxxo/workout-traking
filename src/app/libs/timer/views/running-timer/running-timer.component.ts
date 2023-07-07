@@ -12,15 +12,8 @@ export class RunningTimerComponent {
   @Input() selectedTimer$: Observable<number>;
   runningTimer$: Observable<number>;
 
-  // time: Observable<number>;
-
+  //  TODO revoir ce qu il est possible de faire au niveau du decalage d'affichage
   constructor() {
-    // const start = 60;
-    /*    this.time   =
-     timer(1000, 1000).pipe(
-     map((i => start - i)),
-     take(start + 1)
-     );*/
   }
 
   ngOnInit() {
@@ -32,7 +25,6 @@ export class RunningTimerComponent {
         );
       })
     );
-
   }
 
 }

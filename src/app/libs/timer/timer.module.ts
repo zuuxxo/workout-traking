@@ -10,10 +10,11 @@ import {DisplayAllAvailableTimerUseCase} from './domain/features/display-all-ava
 import {MatButtonModule} from '@angular/material/button';
 import {DisplayByDurationPipe} from './views/shared/pipe/display-by-duration.pipe';
 import {RunningTimerComponent} from './views/running-timer/running-timer.component';
-import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-case';
+import {DisplaySelectedTimerUseCase} from './domain/features/display-selected-timer-use-case';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { ConvertToHundredBasePipe } from './views/shared/pipe/convert-to-hundred-base.pipe';
+import {ConvertToHundredBasePipe} from './views/shared/pipe/convert-to-hundred-base.pipe';
+import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-case';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { ConvertToHundredBasePipe } from './views/shared/pipe/convert-to-hundred
             exports:      [
               TimerContainerComponent
             ],
-            imports: [
+            imports:      [
               CommonModule,
               StoreModule.forFeature(fromTimers.timersFeatureKey, fromTimers.reducer),
               EffectsModule.forFeature([TimersEffects]),
@@ -35,7 +36,7 @@ import { ConvertToHundredBasePipe } from './views/shared/pipe/convert-to-hundred
               MatProgressSpinnerModule,
               MatProgressBarModule,
             ],
-            providers:    [DisplayAllAvailableTimerUseCase, RunSelectedTimerUseCase]
+            providers:    [DisplayAllAvailableTimerUseCase, DisplaySelectedTimerUseCase, RunSelectedTimerUseCase]
           })
 export class TimerModule {
 }

@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class ConvertToHundredBasePipe implements PipeTransform {
 
   transform(runningTimer: number, selectedTimer): number {
-    let progress = 100;
+    let progress = 0;
     if (runningTimer && selectedTimer) {
       progress = runningTimer / selectedTimer * 100;
     }

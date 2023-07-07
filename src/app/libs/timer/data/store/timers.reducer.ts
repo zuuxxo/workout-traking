@@ -4,7 +4,7 @@ import {Timer} from '../../domain/model/timer';
 export const TimersActions    = createActionGroup({
                                                     source: 'Timers',
                                                     events: {
-                                                      'Timer Timers':         emptyProps(),
+                                                      runTimer:               props<{ selectedTimer: number }>(),
                                                       'Timer Timers Success': props<{ data: unknown }>(),
                                                       'Timer Timers Failure': props<{ error: unknown }>(),
                                                     }
@@ -23,7 +23,7 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(TimersActions.timerTimers, state => state),
+  on(TimersActions.runTimer, (state, {selectedTimer}) => ({...state, selectedTimer: selectedTimer})),
   on(TimersActions.timerTimersSuccess, (state, action) => state),
   on(TimersActions.timerTimersFailure, (state, action) => state),
 );

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Timer} from '../../domain/model/timer';
 import {Observable} from 'rxjs';
 
@@ -10,5 +10,13 @@ import {Observable} from 'rxjs';
            })
 export class TimerListComponent {
   @Input() timers!: Array<Timer>;
+  @Output() selectTimer: EventEmitter<number>;
 
+  constructor() {
+    this.selectTimer = new EventEmitter<number>();
+  }
+
+  onSelectTimer(duration) {
+    this.selectTimer.emit(duration);
+  }
 }

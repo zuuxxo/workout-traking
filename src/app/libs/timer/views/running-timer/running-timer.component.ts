@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Observable, switchMap, take, timer} from 'rxjs';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {BehaviorSubject, filter, finalize, Observable, switchMap, take, tap, timer} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -10,17 +10,21 @@ import {map} from 'rxjs/operators';
            })
 export class RunningTimerComponent {
   @Input() selectedTimer$: Observable<number>;
+  @Output() timerEnd: EventEmitter<void>;
   runningTimer$: Observable<number>;
 
   constructor() {
+    this.timerEnd = new EventEmitter<void>();
   }
 
   ngOnInit() {
     this.runningTimer$ = this.selectedTimer$.pipe(
+      filter((selectedTimer) => selectedTimer !== null),
       switchMap((selectedTimer) => {
         return timer(0, 1000).pipe(
           map((i => selectedTimer - i)),
-          take(selectedTimer + 1)
+          take(selectedTimer + 1),
+          finalize(() => this.timerEnd.emit())
         );
       })
     );

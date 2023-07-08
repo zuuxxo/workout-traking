@@ -4,34 +4,41 @@ import {Timer} from '../../domain/model/timer';
 export const TimersActions    = createActionGroup({
                                                     source: 'Timers',
                                                     events: {
-                                                      runTimer:               props<{ selectedTimer: number }>(),
-                                                      'Timer Timers Success': props<{ data: unknown }>(),
-                                                      'Timer Timers Failure': props<{ error: unknown }>(),
+                                                      runTimer:  props<{ selectedTimer: number }>(),
+                                                      stopTimer: emptyProps
                                                     }
                                                   });
 export const timersFeatureKey = 'timers';
 
+export const enum StatusEnum {
+  START = 'START',
+  STOP  = 'STOP'
+}
+
 export interface State {
   timers: Array<Timer>;
   selectedTimer: number;
+  status: StatusEnum;
 }
 
 export const initialState: State = {
   timers:        [{duration: 30}, {duration: 60}, {duration: 90}, {duration: 120}, {duration: 150}, {duration: 180}],
-  selectedTimer: 0
+  selectedTimer: null,
+  status:        StatusEnum.STOP
 };
 
 export const reducer = createReducer(
   initialState,
-  on(TimersActions.runTimer, (state, {selectedTimer}) => ({...state, selectedTimer: selectedTimer})),
-  on(TimersActions.timerTimersSuccess, (state, action) => state),
-  on(TimersActions.timerTimersFailure, (state, action) => state),
+  on(TimersActions.runTimer,
+     (state, {selectedTimer}) => ({...state, selectedTimer: selectedTimer, status: StatusEnum.START})),
+  on(TimersActions.stopTimer,
+     (state) => ({...state, status: StatusEnum.STOP})),
 );
 
-export const timersFeature                       = createFeature({
-                                                                   name: timersFeatureKey,
-                                                                   reducer,
-                                                                 });
-export const {selectTimers, selectSelectedTimer} = timersFeature;
+export const timersFeature                                     = createFeature({
+                                                                                 name: timersFeatureKey,
+                                                                                 reducer,
+                                                                               });
+export const {selectTimers, selectSelectedTimer, selectStatus} = timersFeature;
 
 

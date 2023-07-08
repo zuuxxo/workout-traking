@@ -15,6 +15,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ConvertToHundredBasePipe} from './views/shared/pipe/convert-to-hundred-base.pipe';
 import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-case';
+import {stopTimerUseCase} from './domain/features/stop-timer-use-case';
+import {DisplayTimerStatusUseCase} from './domain/features/display-timer-status-use-case';
 
 
 @NgModule({
@@ -36,7 +38,11 @@ import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-
               MatProgressSpinnerModule,
               MatProgressBarModule,
             ],
-            providers:    [DisplayAllAvailableTimerUseCase, DisplaySelectedTimerUseCase, RunSelectedTimerUseCase]
+            providers:    [DisplayAllAvailableTimerUseCase,
+                           DisplaySelectedTimerUseCase,
+                           RunSelectedTimerUseCase,
+                           stopTimerUseCase,
+                           DisplayTimerStatusUseCase]
           })
 export class TimerModule {
 }

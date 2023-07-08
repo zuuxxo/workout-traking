@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, switchMap, take, timer} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {selectSelectedTimer} from '../../data/store/timers.reducer';
+import {map} from 'rxjs/operators';
+import {State} from '../../data/store/timers.reducer';
 
 @Injectable()
 export class DisplaySelectedTimerUseCase {
@@ -11,15 +11,15 @@ export class DisplaySelectedTimerUseCase {
   }
 
   execute(): Observable<number> {
-    return this.store.select(selectSelectedTimer)
-      /*         .pipe(
-      switchMap((selectedTimer) => {
-        return timer(1000, 1000).pipe(
-          map((i => selectedTimer - i)),
-          take(selectedTimer + 1)
-        );
-      })
-    );*/
+    return this.store.pipe(map((state: { timers: State }) => state.timers.selectedTimer));
+    /*         .pipe(
+     switchMap((selectedTimer) => {
+     return timer(1000, 1000).pipe(
+     map((i => selectedTimer - i)),
+     take(selectedTimer + 1)
+     );
+     })
+     );*/
   }
 
 }

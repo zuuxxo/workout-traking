@@ -1,6 +1,6 @@
 <ng-container *ngIf="{selectedTimer :selectedTimer$|async,
- runningTimer:runningTimer$|async} as datas" >
-  <div *ngIf="datas" class="container">
+ runningTimer:runningTimer$|async} as datas">
+  <div *ngIf="datas.runningTimer && datas.runningTimer!==0" class="container">
     <div class="timer"><p>{{datas.runningTimer|displayByDuration}}</p></div>
     <mat-progress-bar class="progress" mode="determinate"
                       [value]="datas.runningTimer|convertToBaseHundred:datas.selectedTimer"></mat-progress-bar>

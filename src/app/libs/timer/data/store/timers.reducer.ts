@@ -18,7 +18,7 @@ export interface State {
 
 export const initialState: State = {
   timers:        [{duration: 30}, {duration: 60}, {duration: 90}, {duration: 120}, {duration: 150}, {duration: 180}],
-  selectedTimer: 60
+  selectedTimer: 0
 };
 
 export const reducer = createReducer(
@@ -33,4 +33,5 @@ export const timersFeature                       = createFeature({
                                                                    reducer,
                                                                  });
 export const {selectTimers, selectSelectedTimer} = timersFeature;
+
 

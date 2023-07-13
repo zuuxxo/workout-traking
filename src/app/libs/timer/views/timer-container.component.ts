@@ -41,7 +41,7 @@ export class TimerContainerComponent {
     this.runTimer.execute(timer);
   }
 
-  timerEnd(): void {
+  stopTimerExecution(): void {
     this.stopTimer.execute();
   }
 }

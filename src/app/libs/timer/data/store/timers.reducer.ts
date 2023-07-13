@@ -22,7 +22,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  timers:        [{duration: 30}, {duration: 60}, {duration: 90}, {duration: 120}, {duration: 150}, {duration: 180}],
+  timers:        [{duration: 5}, {duration: 60}, {duration: 90}, {duration: 120}, {duration: 150}, {duration: 180}],
   selectedTimer: null,
   status:        StatusEnum.STOP
 };

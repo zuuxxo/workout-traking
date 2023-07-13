@@ -1,9 +1,14 @@
 .container {
   padding: 10px 0;
   display: flex;
+  min-height: 120px;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 14px 12px 5px -9px rgba(0,0,0,0.5);
 }
 
 .timers-list {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex: 2;
@@ -15,4 +20,8 @@
 
 .running-timer {
   flex: 1;
+}
+
+.stop-timer-button{
+  font-size: 25px;
 }

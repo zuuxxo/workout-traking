@@ -23,8 +23,11 @@ export class RunningTimerComponent {
       switchMap((selectedTimer) => {
         return timer(0, 1000).pipe(
           map((i => selectedTimer - i)),
-          take(selectedTimer + 1),
-          finalize(() => this.timerEnd.emit())
+          tap((remainingTime) => {
+            if (remainingTime < 0) {
+              this.timerEnd.emit();
+            }
+          }),
         );
       })
     );

@@ -19,8 +19,6 @@ export class TimerContainerComponent {
   selectedTimer$: Observable<number>;
   timerStatus$: Observable<StatusEnum>;
 
-  // TODO gerer une hauteur minimal pour ce module et un max width
-  // TODO centrer le bouton stop
   // TODO revoir les responsabilté de chacun
 
   constructor(private displayTimers: DisplayAllAvailableTimerUseCase,

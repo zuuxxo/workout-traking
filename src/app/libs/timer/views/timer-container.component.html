@@ -9,7 +9,8 @@
   </div>
   <div *ngIf="datas.timerStatus==='STOP'" class="timers">
 
-    <app-timer-list class="timer-list" (selectTimer)="runSelectedTimer($event)" [timers]="datas.timers"></app-timer-list>
+    <app-timer-list class="timer-list" (selectTimer)="runSelectedTimer($event)"
+                    [timers]="datas.timers"></app-timer-list>
     <div class="new-timer">
 
     </div>

@@ -3,25 +3,38 @@
   display: flex;
   min-height: 120px;
   max-width: 1200px;
-  margin: auto;
-  box-shadow: 14px 12px 5px -9px rgba(0,0,0,0.5);
+  margin: 10px  auto;
+  box-shadow: 0px 12px 15px -12px rgba(63,8,181,0.22);
+  border: #3F51B5 solid 0.5px ;
+  border-radius: 15px;
 }
 
-.timers-list {
+.timers {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 2;
+  .timer-list {
+    flex: 2;
+  }
+
+  .new-timer {
+    flex: 1;
+  }
 }
 
-.new-timer {
-  flex: 1;
-}
 
 .running-timer {
-  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  .timer {
+  }
+
+  .stop-timer-button {
+    height: 60px;
+    font-size: 25px;
+  }
 }
 
-.stop-timer-button{
-  font-size: 25px;
-}
+

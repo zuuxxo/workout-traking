@@ -1,20 +1,20 @@
 <div *ngIf="{timers :timers$|async, timerStatus: timerStatus$|async}as datas" class="container">
-  <div class="running-timer">
-    <app-running-timer *ngIf="datas.timerStatus==='START'" (timerEnd)="stopTimerExecution()"
+  <div class="running-timer" *ngIf="datas.timerStatus==='START'">
+    <app-running-timer class="timer" (timerEnd)="stopTimerExecution()"
                        [selectedTimer$]="selectedTimer$"></app-running-timer>
-  </div>
-  <div class="timers-list">
     <button class="stop-timer-button" mat-raised-button color="accent" (click)="stopTimerExecution()"
-            *ngIf="datas.timerStatus==='START'; else list">
+            *ngIf="datas.timerStatus==='START'">
       STOP
     </button>
-    <ng-template #list>
-      <app-timer-list (selectTimer)="runSelectedTimer($event)" [timers]="datas.timers"></app-timer-list>
-    </ng-template>
+  </div>
+  <div *ngIf="datas.timerStatus==='STOP'" class="timers">
+
+    <app-timer-list class="timer-list" (selectTimer)="runSelectedTimer($event)" [timers]="datas.timers"></app-timer-list>
+    <div class="new-timer">
+
+    </div>
   </div>
 
-  <div class="new-timer">
 
-  </div>
 </div>
 

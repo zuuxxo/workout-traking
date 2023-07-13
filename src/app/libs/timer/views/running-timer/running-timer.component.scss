@@ -3,18 +3,17 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  min-width: 150px;
 }
 
 .timer {
   display: flex;
   align-items: center;
-  flex: 4;
   font-weight: bold;
-  font-size: x-large;
+  font-size: xx-large
 }
 
 .progress {
-  flex: 1;
   max-width: 80%;
 }
 

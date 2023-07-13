@@ -1,0 +1,15 @@
+<h3>Ajouter un timer</h3>
+<div class="add" [formGroup]="form">
+  <mat-form-field class="time" >
+    <mat-label>Minutes</mat-label>
+    <input formControlName="minutes" matInput max="60" maxlength="2" type="number" placeholder="Minutes">
+  </mat-form-field>
+  <mat-form-field class="time">
+    <mat-label>Secondes</mat-label>
+    <input formControlName="secondes" matInput max="60" maxlength="2" type="number" placeholder="Secondes">
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button (click)="addTimer()" color="primary">Ajouter</button>
+</div>
+

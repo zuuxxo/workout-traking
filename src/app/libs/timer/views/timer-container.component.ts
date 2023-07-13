@@ -7,6 +7,7 @@ import {RunSelectedTimerUseCase} from '../domain/features/run-selected-timer-use
 import {StatusEnum} from '../data/store/timers.reducer';
 import {stopTimerUseCase} from '../domain/features/stop-timer-use-case';
 import {DisplayTimerStatusUseCase} from '../domain/features/display-timer-status-use-case';
+import {AddNewTimerUseCase} from '../domain/features/add-new-timer-use-case';
 
 @Component({
              selector:        'app-timer',
@@ -25,7 +26,8 @@ export class TimerContainerComponent {
               private displaySelectedTimer: DisplaySelectedTimerUseCase,
               private runTimer: RunSelectedTimerUseCase,
               private stopTimer: stopTimerUseCase,
-              private displayStatus: DisplayTimerStatusUseCase) {
+              private displayStatus: DisplayTimerStatusUseCase,
+              private addTimer: AddNewTimerUseCase) {
   }
 
   ngOnInit() {
@@ -41,5 +43,9 @@ export class TimerContainerComponent {
 
   stopTimerExecution(): void {
     this.stopTimer.execute();
+  }
+
+  addNewTimer(timer: number) {
+    this.addTimer.execute(new Timer(timer));
   }
 }

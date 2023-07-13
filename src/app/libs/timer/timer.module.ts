@@ -17,6 +17,11 @@ import {ConvertToHundredBasePipe} from './views/shared/pipe/convert-to-hundred-b
 import {RunSelectedTimerUseCase} from './domain/features/run-selected-timer-use-case';
 import {stopTimerUseCase} from './domain/features/stop-timer-use-case';
 import {DisplayTimerStatusUseCase} from './domain/features/display-timer-status-use-case';
+import {NewTimerComponent} from './views/new-timer/new-timer.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AddNewTimerUseCase} from './domain/features/add-new-timer-use-case';
 
 
 @NgModule({
@@ -25,7 +30,8 @@ import {DisplayTimerStatusUseCase} from './domain/features/display-timer-status-
               TimerListComponent,
               DisplayByDurationPipe,
               RunningTimerComponent,
-              ConvertToHundredBasePipe
+              ConvertToHundredBasePipe,
+              NewTimerComponent
             ],
             exports:      [
               TimerContainerComponent
@@ -37,12 +43,16 @@ import {DisplayTimerStatusUseCase} from './domain/features/display-timer-status-
               MatButtonModule,
               MatProgressSpinnerModule,
               MatProgressBarModule,
+              MatFormFieldModule,
+              MatInputModule,
+              ReactiveFormsModule,
             ],
             providers:    [DisplayAllAvailableTimerUseCase,
                            DisplaySelectedTimerUseCase,
                            RunSelectedTimerUseCase,
                            stopTimerUseCase,
-                           DisplayTimerStatusUseCase]
+                           DisplayTimerStatusUseCase,
+                           AddNewTimerUseCase]
           })
 export class TimerModule {
 }

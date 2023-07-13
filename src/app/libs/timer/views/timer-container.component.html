@@ -12,7 +12,7 @@
     <app-timer-list class="timer-list" (selectTimer)="runSelectedTimer($event)"
                     [timers]="datas.timers"></app-timer-list>
     <div class="new-timer">
-
+      <app-new-timer (newTimer)="addNewTimer($event)"></app-new-timer>
     </div>
   </div>
 

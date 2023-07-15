@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AddNewTimerUseCase} from './domain/features/add-new-timer-use-case';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {AddNewTimerUseCase} from './domain/features/add-new-timer-use-case';
               MatFormFieldModule,
               MatInputModule,
               ReactiveFormsModule,
+              MatIconModule
             ],
             providers:    [DisplayAllAvailableTimerUseCase,
                            DisplaySelectedTimerUseCase,

@@ -20,6 +20,10 @@ export class TimerContainerComponent {
   selectedTimer$: Observable<number>;
   timerStatus$: Observable<StatusEnum>;
 
+  // TODO voir le design de l ajout de timer
+  //  creer les validators
+  //  revoir si je fais l operation d ajout dans  le reduceur ou dans le use cas
+  //  TOOD utilisation des adapters pour le tableau ? 
   // TODO revoir les responsabilté de chacun
 
   constructor(private displayTimers: DisplayAllAvailableTimerUseCase,

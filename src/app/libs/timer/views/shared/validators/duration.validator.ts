@@ -1,5 +1,6 @@
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {AddNewTimerUseCase} from '../../../domain/features/add-new-timer-use-case';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 export function DurationValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -10,4 +11,10 @@ export function DurationValidator(): ValidatorFn {
       }
     };
   };
+}
+
+export class durationErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null) {
+    return (control.value && control?.invalid && control.dirty) ?? false;
+  }
 }

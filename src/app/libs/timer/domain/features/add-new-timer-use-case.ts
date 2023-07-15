@@ -8,7 +8,6 @@ import {take} from 'rxjs';
 export class AddNewTimerUseCase {
 
   constructor(private store: Store) {
-
   }
 
   execute(time: { minutes: number, secondes: number }): void {
@@ -29,7 +28,6 @@ export class AddNewTimerUseCase {
   }
 
   static isValidDuration(duration: number): boolean {
-    console.log('isValidDuration', duration > 0 && duration <= 60);
     return duration > 0 && duration <= 60;
   }
 

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Timer} from '../domain/model/timer';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {DisplayAllAvailableTimerUseCase} from '../domain/features/display-all-available-timer-use-case';
 import {DisplaySelectedTimerUseCase} from '../domain/features/display-selected-timer-use-case';
 import {RunSelectedTimerUseCase} from '../domain/features/run-selected-timer-use-case';
@@ -8,6 +8,8 @@ import {StatusEnum} from '../data/store/timers.reducer';
 import {stopTimerUseCase} from '../domain/features/stop-timer-use-case';
 import {DisplayTimerStatusUseCase} from '../domain/features/display-timer-status-use-case';
 import {AddNewTimerUseCase} from '../domain/features/add-new-timer-use-case';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {durationErrorStateMatcher} from './shared/validators/duration.validator';
 
 @Component({
              selector:        'app-timer',
@@ -36,7 +38,6 @@ export class TimerContainerComponent {
     this.timers$        = this.displayTimers.execute();
     this.selectedTimer$ = this.displaySelectedTimer.execute();
     this.timerStatus$   = this.displayStatus.execute();
-
   }
 
   runSelectedTimer(timer: number): void {

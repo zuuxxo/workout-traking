@@ -3,11 +3,11 @@
   <div class="add" [formGroup]="form">
     <mat-form-field class="time">
       <mat-label>Minutes</mat-label>
-      <input formControlName="minutes" matInput max="60" maxlength="2" type="number">
+      <input [errorStateMatcher]="durationErrorMatcher" formControlName="minutes" matInput max="60" maxlength="2" type="number">
     </mat-form-field>
     <mat-form-field class="time">
       <mat-label>Secondes</mat-label>
-      <input formControlName="secondes" matInput max="60" maxlength="2" type="number">
+      <input [errorStateMatcher]="durationErrorMatcher" formControlName="secondes" matInput max="60" maxlength="2" type="number">
     </mat-form-field>
     <div class="button-container">
       <button mat-mini-fab (click)="addTimer()" color="primary">

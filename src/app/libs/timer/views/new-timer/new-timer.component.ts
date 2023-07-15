@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {DurationValidator} from '../shared/validators/duration.validator';
+import {durationErrorStateMatcher, DurationValidator} from '../shared/validators/duration.validator';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
              selector:        'app-new-timer',
@@ -11,13 +12,17 @@ import {DurationValidator} from '../shared/validators/duration.validator';
 export class NewTimerComponent {
   form: FormGroup;
   @Output() newTimer: EventEmitter<{ minutes: number, secondes: number }>;
+  durationErrorMatcher: ErrorStateMatcher;
+
 
   constructor(private fb: FormBuilder) {
-    this.form     = this.fb.group({
-                                    minutes:  [null, [DurationValidator()]],
-                                    secondes: [null, [DurationValidator()]]
-                                  });
-    this.newTimer = new EventEmitter();
+    this.form                 = this.fb.group({
+                                                minutes:  [null, [DurationValidator()]],
+                                                secondes: [null, [DurationValidator()]]
+                                              });
+    this.newTimer             = new EventEmitter();
+    this.durationErrorMatcher = new durationErrorStateMatcher();
+
   }
 
   get minutes(): AbstractControl {
@@ -29,7 +34,8 @@ export class NewTimerComponent {
   }
 
   addTimer() {
-    if (this.minutes.valid || this.secondes.valid) {
+    console.log(this.form.value);
+    if ((this.minutes && this.minutes.valid) || (this.secondes && this.secondes.valid)) {
       this.newTimer.emit(this.form.value);
     }
   }

@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DurationValidator} from '../shared/validators/duration.validator';
 
 @Component({
              selector:        'app-new-timer',
@@ -13,8 +14,8 @@ export class NewTimerComponent {
 
   constructor(private fb: FormBuilder) {
     this.form     = this.fb.group({
-                                    minutes:  [null],
-                                    secondes: [null]
+                                    minutes:  [null, [DurationValidator()]],
+                                    secondes: [null, [DurationValidator()]]
                                   });
     this.newTimer = new EventEmitter();
   }

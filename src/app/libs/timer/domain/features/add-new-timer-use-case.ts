@@ -25,4 +25,8 @@ export class AddNewTimerUseCase {
     return !!timers.find((t: Timer) => t.duration === timer.duration);
   }
 
+  static isValidDuration(duration: number): boolean {
+    return duration > 0 && duration <= 60;
+  }
+
 }

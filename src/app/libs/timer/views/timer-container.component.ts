@@ -20,10 +20,10 @@ export class TimerContainerComponent {
   selectedTimer$: Observable<number>;
   timerStatus$: Observable<StatusEnum>;
 
-  //  revoir si je fais l operation d ajout dans  le reduceur ou dans le use cas
-  //  TOOD utilisation des adapters pour le tableau ?
   // TODO revoir les responsabilté de chacun
-
+  // TODO revoir le nommage
+  //  TODO est ce que je fais des test
+  //  TODO est ce que je fais une facade
   constructor(private displayTimers: DisplayAllAvailableTimerUseCase,
               private displaySelectedTimer: DisplaySelectedTimerUseCase,
               private runTimer: RunSelectedTimerUseCase,
@@ -39,7 +39,7 @@ export class TimerContainerComponent {
 
   }
 
-  runSelectedTimer(timer: number) {
+  runSelectedTimer(timer: number): void {
     this.runTimer.execute(timer);
   }
 
@@ -47,7 +47,7 @@ export class TimerContainerComponent {
     this.stopTimer.execute();
   }
 
-  addNewTimer(timer: number) {
-    this.addTimer.execute(new Timer(timer));
+  addNewTimer(time: { minutes: number, secondes: number }): void {
+    this.addTimer.execute(time);
   }
 }

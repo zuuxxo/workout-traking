@@ -6,7 +6,7 @@ export const TimersActions    = createActionGroup({
                                                     events: {
                                                       runTimer:  props<{ selectedTimer: number }>(),
                                                       stopTimer: emptyProps,
-                                                      newTimer:  props<{ timer: Timer }>()
+                                                      newTimers:  props<{ timers: Timer[] }>()
                                                     }
                                                   });
 export const timersFeatureKey = 'timers';
@@ -41,14 +41,9 @@ export const reducer = createReducer(
      (state, {selectedTimer}) => ({...state, selectedTimer: selectedTimer, status: StatusEnum.START})),
   on(TimersActions.stopTimer,
      (state) => ({...state, status: StatusEnum.STOP})),
-  on(TimersActions.newTimer,
-     (state, {timer}) => {
-       const newTimers = state.timers.slice(0, -1);
-       console.log(newTimers);
-       newTimers.unshift(timer);
-       console.log(newTimers);
-       return {...state, timers: newTimers};
-     }),
+  on(TimersActions.newTimers,
+     (state, {timers}) => ({...state, timers: timers})
+     ),
 );
 
 export const timersFeature                                     = createFeature({

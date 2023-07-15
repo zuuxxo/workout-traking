@@ -11,12 +11,15 @@ export class AddNewTimerUseCase {
 
   }
 
-  execute(timer: Timer): void {
+  execute(time: { minutes: number, secondes: number }): void {
     this.store.select(selectTimers)
         .pipe(take(1))
         .subscribe((timers: Timer[]) => {
+          const duration = (time.minutes * 60) + time.secondes;
+          const timer    = new Timer(duration);
           if (!this.isTimerAlreadyExist(timers, timer)) {
-            this.store.dispatch(TimersActions.newTimer({timer: timer}));
+            const newTimers = this.addNewTimer(timers, timer);
+            this.store.dispatch(TimersActions.newTimers({timers: newTimers}));
           }
         });
   }
@@ -26,7 +29,13 @@ export class AddNewTimerUseCase {
   }
 
   static isValidDuration(duration: number): boolean {
+    console.log('isValidDuration', duration > 0 && duration <= 60);
     return duration > 0 && duration <= 60;
   }
 
+  private addNewTimer(timers: Timer[], timer: Timer): Timer[] {
+    const newTimers = timers.slice(0, -1);
+    newTimers.unshift(timer);
+    return newTimers;
+  }
 }

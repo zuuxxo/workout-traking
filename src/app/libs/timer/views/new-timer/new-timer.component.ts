@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DurationValidator} from '../shared/validators/duration.validator';
 
 @Component({
@@ -10,7 +10,7 @@ import {DurationValidator} from '../shared/validators/duration.validator';
            })
 export class NewTimerComponent {
   form: FormGroup;
-  @Output() newTimer: EventEmitter<number>;
+  @Output() newTimer: EventEmitter<{ minutes: number, secondes: number }>;
 
   constructor(private fb: FormBuilder) {
     this.form     = this.fb.group({
@@ -20,17 +20,17 @@ export class NewTimerComponent {
     this.newTimer = new EventEmitter();
   }
 
+  get minutes(): AbstractControl {
+    return this.form.get('minutes');
+  }
+
+  get secondes(): AbstractControl {
+    return this.form.get('secondes');
+  }
 
   addTimer() {
-    if (this.form.valid) {
-      const {minutes, secondes} = this.form.value;
-      console.log(minutes, secondes);
-      if (minutes || secondes) {
-        const time = (minutes * 60) + secondes;
-        console.log(time);
-        this.newTimer.emit(time);
-      }
+    if (this.minutes.valid || this.secondes.valid) {
+      this.newTimer.emit(this.form.value);
     }
-
   }
 }

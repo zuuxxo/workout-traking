@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-title>{{workout.title}}</mat-card-title>
+  <mat-card-content class="series">
+    <app-serie *ngFor="let serie of workout.series" [serie]="serie"></app-serie>
+  </mat-card-content>
+  <mat-card-footer>{{workout.comments}}</mat-card-footer>
+</mat-card>

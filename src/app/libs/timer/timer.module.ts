@@ -23,6 +23,7 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AddNewTimerUseCase} from './domain/features/add-new-timer-use-case';
 import {MatIconModule} from '@angular/material/icon';
+import {TimerFacadeService} from './domain/features/timerFacade.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {MatIconModule} from '@angular/material/icon';
                            RunSelectedTimerUseCase,
                            stopTimerUseCase,
                            DisplayTimerStatusUseCase,
-                           AddNewTimerUseCase]
+                           AddNewTimerUseCase,
+                           TimerFacadeService]
           })
 export class TimerModule {
 }

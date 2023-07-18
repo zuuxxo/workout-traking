@@ -34,7 +34,6 @@ export class NewTimerComponent {
   }
 
   addTimer() {
-    console.log(this.form.value);
     if ((this.minutes && this.minutes.valid) || (this.secondes && this.secondes.valid)) {
       this.newTimer.emit(this.form.value);
     }

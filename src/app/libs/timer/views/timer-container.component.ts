@@ -1,15 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Timer} from '../domain/model/timer';
 import {Observable} from 'rxjs';
-import {DisplayAllAvailableTimerUseCase} from '../domain/features/display-all-available-timer-use-case';
-import {DisplaySelectedTimerUseCase} from '../domain/features/display-selected-timer-use-case';
-import {RunSelectedTimerUseCase} from '../domain/features/run-selected-timer-use-case';
 import {StatusEnum} from '../data/store/timers.reducer';
-import {stopTimerUseCase} from '../domain/features/stop-timer-use-case';
-import {DisplayTimerStatusUseCase} from '../domain/features/display-timer-status-use-case';
-import {AddNewTimerUseCase} from '../domain/features/add-new-timer-use-case';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {durationErrorStateMatcher} from './shared/validators/duration.validator';
+import {TimerFacadeService} from '../domain/features/timerFacade.service';
 
 @Component({
              selector:        'app-timer',
@@ -24,31 +17,24 @@ export class TimerContainerComponent {
 
   // TODO revoir les responsabilté de chacun
   // TODO revoir le nommage
-  //  TODO est ce que je fais des test
-  //  TODO est ce que je fais une facade
-  constructor(private displayTimers: DisplayAllAvailableTimerUseCase,
-              private displaySelectedTimer: DisplaySelectedTimerUseCase,
-              private runTimer: RunSelectedTimerUseCase,
-              private stopTimer: stopTimerUseCase,
-              private displayStatus: DisplayTimerStatusUseCase,
-              private addTimer: AddNewTimerUseCase) {
+  constructor(private timerFacadeService: TimerFacadeService,) {
   }
 
   ngOnInit() {
-    this.timers$        = this.displayTimers.execute();
-    this.selectedTimer$ = this.displaySelectedTimer.execute();
-    this.timerStatus$   = this.displayStatus.execute();
+    this.timers$        = this.timerFacadeService.timers;
+    this.selectedTimer$ = this.timerFacadeService.selectedTimer;
+    this.timerStatus$   = this.timerFacadeService.timerStatus;
   }
 
   runSelectedTimer(timer: number): void {
-    this.runTimer.execute(timer);
+    this.timerFacadeService.runSelectedTimer(timer);
   }
 
   stopTimerExecution(): void {
-    this.stopTimer.execute();
+    this.timerFacadeService.stopTimerExecution();
   }
 
   addNewTimer(time: { minutes: number, secondes: number }): void {
-    this.addTimer.execute(time);
+    this.timerFacadeService.addNewTimer(time);
   }
 }

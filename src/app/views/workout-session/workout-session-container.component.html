@@ -1,4 +1,4 @@
 <app-timer></app-timer>
 <div class="container">
-  <app-workout [workout]="workout"></app-workout>
+  <app-workout *ngFor="let workout of workoutSessionForm.controls" [workout]="workout.value"></app-workout>
 </div>

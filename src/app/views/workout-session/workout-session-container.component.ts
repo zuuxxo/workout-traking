@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Workout} from '../../domain/model/workout';
+import {WorkoutSessionFacadeService} from './workout-session-facade.service';
+import {FormArray} from '@angular/forms';
 
 @Component({
              selector:        'app-workout-session-container',
@@ -8,10 +10,12 @@ import {Workout} from '../../domain/model/workout';
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class WorkoutSessionContainerComponent {
-  workout: Workout = {
-    title:    'Développé couché',
-    series:   [{rest: 12, reps: 30, weight: 0}, {rest: 12, reps: 30, weight: 0}, {rest: 12, reps: 30, weight: 0}],
-    comments: 'augmenter le nombre de series'
-  };
+  workoutSessionForm: FormArray;
 
+  constructor(private workoutSessionFacade: WorkoutSessionFacadeService) {
+  }
+
+  ngOnInit() {
+    this.workoutSessionForm = this.workoutSessionFacade.getWorkouSessionForm();
+  }
 }

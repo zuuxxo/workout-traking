@@ -6,6 +6,8 @@ import {TimerModule} from '../../libs/timer/timer.module';
 import { WorkoutComponent } from './components/workout/workout.component';
 import {MatCardModule} from '@angular/material/card';
 import { SerieComponent } from './components/serie/serie.component';
+import {FormsModule} from '../../libs/forms/forms.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { SerieComponent } from './components/serie/serie.component';
               CommonModule,
               WorkoutRoutingModule,
               TimerModule,
-              MatCardModule
+              MatCardModule,
+              FormsModule,
+              ReactiveFormsModule
             ]
           })
 export class WorkoutSessionModule { }

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Workout} from '../../domain/model/workout';
 import {WorkoutSessionFacadeService} from './workout-session-facade.service';
-import {FormArray} from '@angular/forms';
+import {FormArray, FormControl} from '@angular/forms';
 
 @Component({
              selector:        'app-workout-session-container',
@@ -11,11 +11,13 @@ import {FormArray} from '@angular/forms';
            })
 export class WorkoutSessionContainerComponent {
   workoutSessionForm: FormArray;
+  test = new FormControl('test');
 
   constructor(private workoutSessionFacade: WorkoutSessionFacadeService) {
   }
 
   ngOnInit() {
     this.workoutSessionForm = this.workoutSessionFacade.getWorkouSessionForm();
+    this.test.valueChanges.subscribe((v) => console.log(v));
   }
 }

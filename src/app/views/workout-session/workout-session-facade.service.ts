@@ -9,6 +9,7 @@ import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form
               providedIn: 'root'
             })
 export class WorkoutSessionFacadeService {
+
   workouts: Workout[] = [{
     title:    'Développé couché',
     series:   [{rest: 12, reps: 30, weight: 0}, {rest: 12, reps: 30, weight: 0}, {rest: 12, reps: 30, weight: 0}],

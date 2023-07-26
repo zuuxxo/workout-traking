@@ -18,8 +18,7 @@ export class WorkoutSessionContainerComponent {
 
   ngOnInit() {
     this.workoutSessionForm = this.workoutSessionFacade.getWorkouSessionForm();
-    this.workoutSessionForm.valueChanges.subscribe((v) => console.log(v));
-    console.log(this.workoutSessionFormArray);
+    this.workoutSessionFormArray.valueChanges.subscribe((v) => console.log(v));
   }
 
   get workoutSessionFormArray(): FormArray<FormGroup<WorkoutFormInterface>> {

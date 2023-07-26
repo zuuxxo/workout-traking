@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Workout} from '../../domain/model/workout';
-import {WorkoutFormBuilderService} from './workout-form-builder.service';
-import {FormArray} from '@angular/forms';
+import {WorkoutFormBuilderService} from '../../libs/forms/workout-form-builder.service';
+import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {WorkoutFormInterface} from '../../libs/forms/workout-form/workout-form.interface';
+import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form.interface';
 
 @Injectable({
               providedIn: 'root'
@@ -21,8 +23,6 @@ export class WorkoutSessionFacadeService {
     comments: 'augmenter le nombre de series'
   }];
 
-  form: FormArray;
-
 //   features
 //   je veux display un workout
   // je veux pouvoir ajouter une serie a un exercice
@@ -33,7 +33,9 @@ export class WorkoutSessionFacadeService {
   constructor(private workoutFormBuilder: WorkoutFormBuilderService) {
   }
 
-  getWorkouSessionForm(): FormArray {
+  getWorkouSessionForm(): FormGroup<WorkoutSessionFormInterface> {
     return this.workoutFormBuilder.buildWorkoutSessionForm(this.workouts);
   }
+
+
 }

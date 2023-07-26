@@ -1,5 +1,8 @@
 <app-timer></app-timer>
-<div class="container">
-  <app-workout *ngFor="let workout of workoutSessionForm.controls" [workout]="workout.value"></app-workout>
-  <app-generic-input-field title="exemple" type="number" [formControl]="test"></app-generic-input-field>
+<div class="container" *ngIf="workoutSessionFormArray" [formGroup]="workoutSessionForm">
+  <!--  <app-workout *ngFor="let workout of workoutSessionForm.controls" [workout]="workout.value"></app-workout>-->
+  <ng-container *ngFor="let workout of workoutSessionFormArray.controls; let i=index">
+    <app-workout-form
+      [workoutForm]="workout"></app-workout-form>
+  </ng-container>
 </div>

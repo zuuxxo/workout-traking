@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 
 export type GenericInputType = 'text' | 'number'
 @Component({
-             selector:        'app-generic-input-field',
+             selector:        ' app-generic-input-field',
              templateUrl:     './generic-input-field.component.html',
              styleUrls:       ['./generic-input-field.component.scss'],
              changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,10 +14,10 @@ export type GenericInputType = 'text' | 'number'
              }]
            })
 export class GenericInputFieldComponent implements ControlValueAccessor {
-  @Input() title: string;
-  @Input() type: GenericInputType;
+  @Input() title?: string;
+  @Input() type: any;
 
-  onChange  = (value: number | string) => {
+  onChange  = (value) => {
   };
   onTouched = () => {
   };
@@ -30,7 +30,7 @@ export class GenericInputFieldComponent implements ControlValueAccessor {
     this.form = new FormControl<string>(null);
   }
 
-  writeValue(value: number | string): void {
+  writeValue(value): void {
     this.form.setValue(value, {emitEvent: false});
   }
 

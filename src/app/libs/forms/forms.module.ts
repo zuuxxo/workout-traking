@@ -4,19 +4,24 @@ import {GenericInputFieldComponent} from './generic-input-field/generic-input-fi
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { WorkoutFormComponent } from './workout-form/workout-form.component';
+import { SerieFormComponent } from './serie-form/serie-form.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
-            declarations: [GenericInputFieldComponent],
-            exports:      [
-              GenericInputFieldComponent
+            declarations: [GenericInputFieldComponent, WorkoutFormComponent, SerieFormComponent],
+            exports: [
+              GenericInputFieldComponent,
+              WorkoutFormComponent
             ],
-            imports:      [
-              CommonModule,
-              MatFormFieldModule,
-              ReactiveFormsModule,
-              MatInputModule,
-            ]
-          })
+			  imports: [
+				  CommonModule,
+				  MatFormFieldModule,
+				  ReactiveFormsModule,
+				  MatInputModule,
+				  MatCardModule,
+			  ]
+		  })
 export class FormsModule {
 }

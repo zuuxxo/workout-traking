@@ -1,0 +1,13 @@
+<mat-card [formGroup]="workoutForm">
+  <mat-card-content class="container">
+    <div class="title">
+      <app-generic-input-field type="text" formControlName="title" title="title"></app-generic-input-field>
+    </div>
+    <div class="series">
+      <app-serie-form *ngFor="let serie of series; let i=index" [serieForm]="serie"></app-serie-form>
+    </div>
+    <div class="comments">
+      <app-generic-input-field type="text" formControlName="comments" title="Comments"></app-generic-input-field>
+    </div>
+  </mat-card-content>
+</mat-card>

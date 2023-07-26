@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {Workout} from '../../domain/model/workout';
 import {WorkoutSessionFacadeService} from './workout-session-facade.service';
-import {FormArray, FormControl} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
+import {WorkoutFormInterface} from '../../libs/forms/workout-form/workout-form.interface';
+import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form.interface';
 
 @Component({
              selector:        'app-workout-session-container',
@@ -10,14 +11,18 @@ import {FormArray, FormControl} from '@angular/forms';
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class WorkoutSessionContainerComponent {
-  workoutSessionForm: FormArray;
-  test = new FormControl('test');
+  workoutSessionForm: FormGroup<WorkoutSessionFormInterface>;
 
   constructor(private workoutSessionFacade: WorkoutSessionFacadeService) {
   }
 
   ngOnInit() {
     this.workoutSessionForm = this.workoutSessionFacade.getWorkouSessionForm();
-    this.test.valueChanges.subscribe((v) => console.log(v));
+    this.workoutSessionForm.valueChanges.subscribe((v) => console.log(v));
+    console.log(this.workoutSessionFormArray);
+  }
+
+  get workoutSessionFormArray(): FormArray<FormGroup<WorkoutFormInterface>> {
+    return this.workoutSessionForm.get('workoutSession') as FormArray<FormGroup<WorkoutFormInterface>>;
   }
 }

@@ -1,0 +1,23 @@
+.container {
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.series {
+  display: flex;
+  flex: 3;
+}
+
+.title {
+  flex:1;
+/*  border: #3F51B5 solid 0.5px;
+  border-radius: 15px;*/
+  margin: 10px;
+}
+
+.comments{
+  flex:1;
+}

@@ -6,6 +6,7 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {workingSessionReducer} from './data/store/reducers/working-session-model.reducer';
 
 @NgModule({
             declarations: [
@@ -14,7 +15,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
             imports:      [
               BrowserModule,
               AppRoutingModule,
-              StoreModule.forRoot({}, {}),
+              StoreModule.forRoot({workingSession: workingSessionReducer}, {}),
               EffectsModule.forRoot([]),
               BrowserAnimationsModule,
               StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),

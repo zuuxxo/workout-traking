@@ -1,5 +1,5 @@
 import {Workout} from './workout';
-import {WorkoutSessionModel} from './workoutSessionModel';
+import {WorkoutSessionModel} from './workout-session-model';
 
 export class WorkoutSession {
   date?: Date;

@@ -1,0 +1,20 @@
+header{
+  h1{
+    color :#FFD740;
+    margin: 0 !important;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  height: 30px;
+  background-color: #3F51B5;
+  nav{
+    display: flex;
+  }
+  button{
+    min-width: 100px;
+    background-color: #FFD740;
+    margin: 0 5px;
+  }
+}

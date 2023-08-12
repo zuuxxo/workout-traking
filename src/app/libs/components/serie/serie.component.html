@@ -1,4 +1,4 @@
-<div  class="serie">
+<div  class="serie" [ngClass]="{'displayColumn': displayColumnDirection}">
   <p>Poids : {{serie.weight}}</p>
   <p>Répétitions : {{serie.reps}}</p>
   <p>Repos : {{serie.rest}}</p>

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Serie} from '../../../../domain/model/serie';
+import {Serie} from '../../../domain/model/serie';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -10,5 +10,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
            })
 export class SerieComponent {
   @Input() serie: Serie;
+  @Input() displayColumnDirection ?: boolean;
+
+  ngOnInit(){
+    console.log(this.displayColumnDirection);
+  }
 
 }

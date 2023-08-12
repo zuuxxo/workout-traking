@@ -15,8 +15,6 @@ export class WorkoutSessionModelContainerComponent {
   // TODO deplacer les facades dans les uses cases ? ou ailleurs pour les reuntiliser.
   // TODO ajouter date de creation et commentaires  au model d entrainement
   // TODO creer une interface a implementer pour les use case
-  // TODO revoir home qui sera la page de login
-  //creer une page entiere pour la gestion des models avec plusieurs compos
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
 

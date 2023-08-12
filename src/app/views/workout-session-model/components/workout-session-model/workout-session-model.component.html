@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title class="title">{{workoutSessionModel.title|titlecase}}
+    <span
+      *ngIf="workoutSessionModel.creationDate">créé le  {{workoutSessionModel.creationDate|date:'shortDate' }}</span>
+  </mat-card-title>
+  <mat-card-content class="container">
+    <div class="models">
+      <div class="title-container">
+        <div class="workout-title">Exercices</div>
+        <div class="series-title">Series</div>
+        <div class="objectifs-title">Objectifs</div>
+      </div>
+      <app-workout-model *ngFor="let workout of workoutSessionModel.workouts; let i = index"
+                         [workoutModel]="workout"></app-workout-model>
+    </div>
+    <div class="comments">
+      {{workoutSessionModel.comments}}
+    </div>
+  </mat-card-content>
+</mat-card>
+

@@ -8,11 +8,13 @@ export interface WorkingSessionState {
 export const initialState: WorkingSessionState = {
   models: [
     {
-      name:     'EmptyModel',
-      workouts: []
+      title:        'Free training',
+      workouts:     [],
+      creationDate: null,
+      comments:     'Selectionner ce modèle si vous souhaitez effectuer un entrainement libre '
     },
     {
-      name:     'test',
+      title:    'test',
       workouts: [
         {
           title:        'Développé couché',
@@ -33,9 +35,10 @@ export const initialState: WorkingSessionState = {
           objectifs:    {
             rest: 12, reps: 30, weight: 0
           }
-        }]
-    }
-  ]
+        }], creationDate: new Date(),
+      comments:           'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aut beatae consectetur ducimus expedita explicabo hic itaque magni nostrum numquam placeat, porro, repellat tempore. In neque nesciunt non.'
+    },
+  ],
 };
 
 export const workingSessionReducer = createReducer(

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.series {
+  flex: 1;
+}
+
+.objectifs-container {
+  display: flex;
+  flex: 3;
+}
+
+.title {
+  flex: 2;
+}

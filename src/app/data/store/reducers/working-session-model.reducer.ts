@@ -8,7 +8,7 @@ export interface WorkingSessionState {
 export const initialState: WorkingSessionState = {
   models: [
     {
-      title:              'test',
+      title:              'Seance Push',
       workouts:           [
         {
           title:        'Développé couché',

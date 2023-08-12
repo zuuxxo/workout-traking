@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
+import {selectWorkoutSessionModels} from '../../../data/store/selectors/working-session-model.selectors';
+import {Observable} from 'rxjs';
+import {WorkoutSessionModel} from '../../model/workout-session-model';
+import {Store} from '@ngrx/store';
 
 @Injectable({providedIn: 'root'})
 export class DisplayWorkoutSessionModelsUseCase {
 
-  execute() {
-    //   je veux afficher tous les models de session disponible
-    // je les recupere du store
-    //   ils sont recuperer du back au chargement de l appli
-    // je souhaite avoir un entrainement toujours existant qui ^permette de commmencer une session a vide
-    //
+  constructor(private store: Store) {
+  }
 
-
+  execute(): Observable<WorkoutSessionModel[]> {
+    return this.store.select(selectWorkoutSessionModels);
   }
 }

@@ -12,8 +12,4 @@ export class SerieComponent {
   @Input() serie: Serie;
   @Input() displayColumnDirection ?: boolean;
 
-  ngOnInit(){
-    console.log(this.displayColumnDirection);
-  }
-
 }

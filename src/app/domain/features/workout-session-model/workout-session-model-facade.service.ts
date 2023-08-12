@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {WorkoutSessionModel} from '../../domain/model/workout-session-model';
-import {selectWorkoutSessionModels} from '../../data/store/selectors/working-session-model.selectors';
+import {WorkoutSessionModel} from '../../model/workout-session-model';
+import {selectWorkoutSessionModels} from '../../../data/store/selectors/working-session-model.selectors';
 import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})

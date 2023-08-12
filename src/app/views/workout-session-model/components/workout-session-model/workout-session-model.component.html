@@ -10,8 +10,10 @@
         <div class="series-title">Series</div>
         <div class="objectifs-title">Objectifs</div>
       </div>
-      <app-workout-model *ngFor="let workout of workoutSessionModel.workouts; let i = index"
-                         [workoutModel]="workout"></app-workout-model>
+      <div >
+        <app-workout-model *ngFor="let workout of workoutSessionModel.workouts; let i = index"
+                           [workoutModel]="workout"></app-workout-model>
+      </div>
     </div>
     <div class="comments">
       {{workoutSessionModel.comments}}

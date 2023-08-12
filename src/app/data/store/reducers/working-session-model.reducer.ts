@@ -8,14 +8,8 @@ export interface WorkingSessionState {
 export const initialState: WorkingSessionState = {
   models: [
     {
-      title:        'Free training',
-      workouts:     [],
-      creationDate: null,
-      comments:     'Selectionner ce modèle si vous souhaitez effectuer un entrainement libre '
-    },
-    {
-      title:    'test',
-      workouts: [
+      title:              'test',
+      workouts:           [
         {
           title:        'Développé couché',
           seriesNumber: 6,

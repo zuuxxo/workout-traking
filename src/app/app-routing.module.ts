@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/workout-session/workout-session.module').then(m => m.WorkoutSessionModule)
   },
   {
-    path:         'model',
+    path:         'models',
     loadChildren: () => import('./views/workout-session-model/workout-session-model.module').then(m => m.WorkoutSessionModelModule)
   }];
 

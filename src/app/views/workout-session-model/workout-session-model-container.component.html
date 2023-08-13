@@ -1,3 +1,4 @@
+<app-header [navigationItems]="navigationsItems" title="Working Session Models" (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <div class="container">
   <app-workout-session-model class="workout-list" *ngFor="let workoutSessionModel of workoutSessionModels$|async"
                              [workoutSessionModel]="workoutSessionModel"></app-workout-session-model>

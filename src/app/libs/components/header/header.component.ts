@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ActionHeaderInterface} from '../../../domain/features/header/action-header.interface';
+import {NavigationHeaderInterface} from '../../../domain/features/header/navigation-header.interface';
 
 @Component({
              selector:        'app-header',
@@ -8,11 +10,21 @@ import {ActivatedRoute, Router} from '@angular/router';
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class HeaderComponent {
-  constructor(private route: ActivatedRoute, private test:Router) {
+
+  @Input() title: string;
+  @Input() navigationItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
+
+  @Output() selectedNavigationItem: EventEmitter<ActionHeaderInterface | NavigationHeaderInterface>;
+
+  constructor() {
+    this.selectedNavigationItem = new EventEmitter<ActionHeaderInterface | NavigationHeaderInterface>();
   }
 
   ngOnInit() {
-    this.test.events.subscribe((res)=> console.log('events', res))
 
+  }
+
+  selectNavigationItel(item: ActionHeaderInterface | NavigationHeaderInterface) {
+    this.selectedNavigationItem.emit(item);
   }
 }

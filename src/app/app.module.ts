@@ -7,24 +7,23 @@ import {EffectsModule} from '@ngrx/effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {workingSessionReducer} from './data/store/reducers/working-session-model.reducer';
-import { HeaderComponent } from './libs/components/header/header.component';
-import {MatButtonModule} from '@angular/material/button';
+import {HeaderComponent} from './libs/components/header/header.component';
 
 @NgModule({
             declarations: [
               AppComponent,
-              HeaderComponent
             ],
-            imports: [
+            imports:      [
               BrowserModule,
               AppRoutingModule,
               StoreModule.forRoot({workingSession: workingSessionReducer}, {}),
               EffectsModule.forRoot([]),
               BrowserAnimationsModule,
               StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-              MatButtonModule,
             ],
             providers:    [],
+            exports:      [
+            ],
             bootstrap:    [AppComponent]
           })
 export class AppModule {

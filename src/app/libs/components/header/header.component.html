@@ -1,9 +1,15 @@
 <header>
-  <h1>WORKOUT TRACKING</h1>
-  <nav>
+  <h1>{{title}}</h1>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let item of navigationItems">
+      <button (click)="selectNavigationItel(item)" mat-menu-item>{{item.value}}</button>
+    </ng-container>
+  </mat-menu>
+  <!--<nav>
       <button mat-raised-button routerLink="">Home</button>
       <button mat-raised-button routerLink="/model">Model</button>
       <button mat-raised-button routerLink="/session">Session</button>
-  </nav>
+  </nav>-->
 </header>
 

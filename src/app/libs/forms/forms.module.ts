@@ -4,7 +4,7 @@ import {GenericInputFieldComponent} from './generic-input-field/generic-input-fi
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import { WorkoutFormComponent } from './workout-form/workout-form.component';
+import { WorkoutFormComponent } from '../../views/workout-session/components/workout-form/workout-form.component';
 import { SerieFormComponent } from './serie-form/serie-form.component';
 import {MatCardModule} from '@angular/material/card';
 

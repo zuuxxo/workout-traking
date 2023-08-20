@@ -10,6 +10,10 @@ import {ActionModelsHeader} from '../../domain/features/header/models-header.con
 import {Router} from '@angular/router';
 import {HeaderFacadeService} from '../../domain/features/header/header-facade.service';
 import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
+import {MatDialog} from '@angular/material/dialog';
+import {
+  WorkoutSessionModelFormComponent
+} from './components/workout-session-model-form/workout-session-model-form.component';
 
 @Component({
              selector:        'app-workout-session-model-container',
@@ -30,7 +34,8 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
 
   constructor(private workoutSessionModelFacade: WorkoutSessionModelFacadeService,
               private headerFacade: HeaderFacadeService,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
     super();
   }
 
@@ -51,7 +56,7 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
           //     j appelle la facade pour le use Case
           break;
         case ActionModelsHeader.NEW_MODEL:
-
+          this.dialog.open(WorkoutSessionModelFormComponent, {data: {}});
           break;
 
       }

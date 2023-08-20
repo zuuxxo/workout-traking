@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Workout} from '../../domain/model/workout';
-import {WorkoutFormBuilderService} from '../../libs/forms/workout-form-builder.service';
+import {WorkoutFormBuilderService} from '../../libs/services/workout-form-builder.service';
 import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
-import {WorkoutFormInterface} from '../../libs/forms/workout-form/workout-form.interface';
+import {WorkoutFormInterface} from './components/workout-form/workout-form.interface';
 import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form.interface';
 
 @Injectable({

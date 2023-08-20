@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {WorkoutSessionFacadeService} from './workout-session-facade.service';
 import {FormArray, FormGroup} from '@angular/forms';
-import {WorkoutFormInterface} from '../../libs/forms/workout-form/workout-form.interface';
+import {WorkoutFormInterface} from './components/workout-form/workout-form.interface';
 import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form.interface';
 import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
 import {ActionHeaderInterface} from '../../domain/features/header/action-header.interface';

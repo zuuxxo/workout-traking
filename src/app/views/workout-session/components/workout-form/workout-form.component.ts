@@ -8,7 +8,7 @@ import {
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {SerieFormInterface} from '../serie-form/serie-form.interface';
+import {SerieFormInterface} from '../../../../libs/forms/serie-form/serie-form.interface';
 import {WorkoutFormInterface} from './workout-form.interface';
 
 @Component({

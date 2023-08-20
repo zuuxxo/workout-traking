@@ -6,8 +6,10 @@ import {
 } from '../../domain/features/workout-session-model/workout-session-model-facade.service';
 import {ActionHeaderInterface} from '../../domain/features/header/action-header.interface';
 import {NavigationHeaderInterface} from '../../domain/features/header/navigation-header.interface';
-import {ActionModelsHeader, modelsHeaderConstant} from '../../domain/features/header/models-header.constant';
+import {ActionModelsHeader} from '../../domain/features/header/models-header.constant';
 import {Router} from '@angular/router';
+import {HeaderFacadeService} from '../../domain/features/header/header-facade.service';
+import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
 
 @Component({
              selector:        'app-workout-session-model-container',
@@ -15,22 +17,25 @@ import {Router} from '@angular/router';
              styleUrls:       ['./workout-session-model-container.component.scss'],
              changeDetection: ChangeDetectionStrategy.OnPush
            })
-export class WorkoutSessionModelContainerComponent {
+export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAbstractComponent {
   // TODO deplacer les facades dans les uses cases ? ou ailleurs pour les reuntiliser.
   // TODO ajouter date de creation et commentaires  au model d entrainement
   // TODO creer une interface a implementer pour les use case
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
+  //  revoir les uses cas pas assez dry
 
   workoutSessionModels$: Observable<WorkoutSessionModel[]>;
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
 
   constructor(private workoutSessionModelFacade: WorkoutSessionModelFacadeService,
+              private headerFacade: HeaderFacadeService,
               private router: Router) {
-    this.navigationsItems = modelsHeaderConstant;
+    super();
   }
 
   ngOnInit() {
+    this.navigationsItems      = this.headerFacade.getHeaderByView(this.view.key);
     this.workoutSessionModels$ = this.workoutSessionModelFacade.workoutSessionModels;
     this.workoutSessionModels$.subscribe((res) => console.log(res));
   }

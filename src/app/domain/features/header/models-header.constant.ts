@@ -11,7 +11,7 @@ export const enum ActionModelsHeader {
   FREE_WORKOUT = 'FREE_WORKOUT'
 }
 
-export const modelsHeaderConstant: Array<ActionHeaderInterface | NavigationHeaderInterface> = [
+export const ModelsHeaderConstant: Array<ActionHeaderInterface | NavigationHeaderInterface> = [
   {
     key:     'NAVIGATION',
     value:   "Vers l'entrainement",

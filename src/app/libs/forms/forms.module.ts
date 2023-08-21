@@ -13,7 +13,8 @@ import {MatCardModule} from '@angular/material/card';
             declarations: [GenericInputFieldComponent, WorkoutFormComponent, SerieFormComponent],
             exports: [
               GenericInputFieldComponent,
-              WorkoutFormComponent
+              WorkoutFormComponent,
+              SerieFormComponent
             ],
 			  imports: [
 				  CommonModule,

@@ -62,15 +62,21 @@ export class WorkoutFormBuilderService {
     const formArray = new FormArray([]);
     if (workouts) {
       workouts.forEach((workoutModel: WorkoutModel) => {
-        const form = new FormGroup({
-                                     title:       new FormControl(workoutModel?.title),
-                                     serieNumber: new FormControl(workoutModel?.seriesNumber),
-                                     objectifs:   this.buildSerieForm(workoutModel.objectifs)
-                                   });
+        const form = this.buildWorkoutModelForm(workoutModel);
         formArray.push(form);
       });
+    } else {
+      formArray.push(this.buildWorkoutModelForm());
     }
     return formArray;
+  }
+
+  private buildWorkoutModelForm(workoutModel?: WorkoutModel) {
+    return new FormGroup({
+                           title:       new FormControl(workoutModel?.title),
+                           serieNumber: new FormControl(workoutModel?.seriesNumber),
+                           objectifs:   this.buildSerieForm(workoutModel?.objectifs)
+                         });
   }
 }
 

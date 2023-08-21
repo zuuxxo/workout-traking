@@ -10,6 +10,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {
   WorkoutSessionModelFormComponent
 } from './components/workout-session-model-form/workout-session-model-form.component';
+import {FormsModule} from '../../libs/forms/forms.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import {
               WorkoutModelComponent,
               WorkoutSessionModelFormComponent
             ],
-            imports:      [
+            imports: [
               CommonModule,
               MatCardModule,
               WorkoutSessionModelRoutingModule,
               SharedModule,
-              MatDialogModule
+              MatDialogModule,
+              FormsModule,
+              ReactiveFormsModule,
             ]
           })
 export class WorkoutSessionModelModule {

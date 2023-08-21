@@ -2,8 +2,11 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WorkoutFormBuilderService} from '../../../../libs/services/workout-form-builder.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {WorkoutSessionModel} from '../../../../domain/model/workout-session-model';
-import {FormGroup} from '@angular/forms';
-import {WorkoutSessionModelFormInterface} from '../../../../libs/services/workout-session-model-form.interface';
+import {FormArray, FormGroup} from '@angular/forms';
+import {
+  workoutModelForm,
+  WorkoutSessionModelFormInterface
+} from '../../../../libs/services/workout-session-model-form.interface';
 
 @Component({
              selector:        'app-workout-session-form',
@@ -28,9 +31,14 @@ export class WorkoutSessionModelFormComponent {
               @Inject(MAT_DIALOG_DATA) public model: WorkoutSessionModel) {
     this.form = this.workoutFormBuilder.buildWorkoutSessionModelForm(model);
   }
+  
+  get workouts(): FormArray<FormGroup<workoutModelForm>> {
+    return this.form.get('workouts') as FormArray<FormGroup<workoutModelForm>>;
+  }
 
   ngOnInit() {
     console.log(this.form);
+    this.form.valueChanges.subscribe((res) => console.log(res));
 
   }
 }

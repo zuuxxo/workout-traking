@@ -1,1 +1,18 @@
-<p>workout-session-form works!</p>
+<form [formGroup]="form" class="container">
+  <div class="title">
+    <app-generic-input-field type="text" formControlName="title" title="Nom du modele"></app-generic-input-field>
+  </div>
+  <div class="workouts" formArrayName="workouts">
+    <h4>Exercices</h4>
+    <div class="model" *ngFor="let model of workouts.controls; let i = index" [formGroup]="model">
+
+      <app-generic-input-field type="text" formControlName="title" title="nom de l'exercice"></app-generic-input-field>
+      <app-generic-input-field type="number" formControlName="serieNumber"
+                               title="nombre de serie"></app-generic-input-field>
+      <app-serie-form [serieForm]="model.controls['objectifs']" [param]="{flexDirection:'row'}"> </app-serie-form>
+    </div>
+  </div>
+  <div class="comments">
+    <app-generic-input-field type="text" formControlName="comments" title="Commentaires"></app-generic-input-field>
+  </div>
+</form>

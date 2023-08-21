@@ -27,7 +27,8 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   // TODO creer une interface a implementer pour les use case
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
-  //  revoir les uses cas pas assez dry
+  //  revoir les uses case et code base  du header  pas assez dry
+  // revoir le service de creation de formulai
 
   workoutSessionModels$: Observable<WorkoutSessionModel[]>;
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;

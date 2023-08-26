@@ -31,7 +31,7 @@ export class WorkoutSessionModelFormComponent {
               @Inject(MAT_DIALOG_DATA) public model: WorkoutSessionModel) {
     this.form = this.workoutFormBuilder.buildWorkoutSessionModelForm(model);
   }
-  
+
   get workouts(): FormArray<FormGroup<workoutModelForm>> {
     return this.form.get('workouts') as FormArray<FormGroup<workoutModelForm>>;
   }
@@ -40,5 +40,13 @@ export class WorkoutSessionModelFormComponent {
     console.log(this.form);
     this.form.valueChanges.subscribe((res) => console.log(res));
 
+  }
+
+  addWorkout(): void {
+    this.workouts.push(this.workoutFormBuilder.buildWorkoutModelForm());
+  }
+
+  deleteWorkout(workoutIndex: number): void {
+    this.workouts.removeAt(workoutIndex);
   }
 }

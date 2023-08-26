@@ -12,6 +12,8 @@ import {
 } from './components/workout-session-model-form/workout-session-model-form.component';
 import {FormsModule} from '../../libs/forms/forms.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {ReactiveFormsModule} from '@angular/forms';
               MatDialogModule,
               FormsModule,
               ReactiveFormsModule,
+              MatButtonModule,
+              MatIconModule
             ]
           })
 export class WorkoutSessionModelModule {

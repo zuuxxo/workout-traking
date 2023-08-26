@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {AbstractGenericFieldComponents} from '../abstract-generic-field.components';
 
 export type GenericInputType = 'text' | 'number'
 @Component({
@@ -13,11 +14,11 @@ export type GenericInputType = 'text' | 'number'
                useExisting: GenericInputFieldComponent
              }]
            })
-export class GenericInputFieldComponent implements ControlValueAccessor {
-  @Input() title?: string;
-  @Input() type: any;
+export class GenericInputFieldComponent extends AbstractGenericFieldComponents{
+  // @Input() title?: string;
+  @Input() type: GenericInputType;
 
-  onChange  = (value) => {
+  /*onChange  = (value) => {
   };
   onTouched = () => {
   };
@@ -58,5 +59,5 @@ export class GenericInputFieldComponent implements ControlValueAccessor {
     if (!this.disabled) {
       this.onChange(this.form.value);
     }
-  }
+  }*/
 }

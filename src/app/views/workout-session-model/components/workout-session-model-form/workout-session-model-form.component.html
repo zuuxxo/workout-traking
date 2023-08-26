@@ -1,18 +1,34 @@
 <form [formGroup]="form" class="container">
-  <div class="title">
-    <app-generic-input-field type="text" formControlName="title" title="Nom du modele"></app-generic-input-field>
+  <div class="header">
+    <app-generic-input-field class="title" type="text" formControlName="title"
+                             title="Nom du modele"></app-generic-input-field>
+    <app-generic-text-area-field class="comments" formControlName="comments"
+                                 title="Commentaires"></app-generic-text-area-field>
   </div>
   <div class="workouts" formArrayName="workouts">
-    <h4>Exercices</h4>
+    <div class="workouts-header">
+      <h2>Exercices</h2>
+      <button (click)="addWorkout()" mat-mini-fab color="primary">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
     <div class="model" *ngFor="let model of workouts.controls; let i = index" [formGroup]="model">
-
-      <app-generic-input-field type="text" formControlName="title" title="nom de l'exercice"></app-generic-input-field>
-      <app-generic-input-field type="number" formControlName="serieNumber"
-                               title="nombre de serie"></app-generic-input-field>
-      <app-serie-form [serieForm]="model.controls['objectifs']" [param]="{flexDirection:'row'}"> </app-serie-form>
+      <div class="workout-number">{{i + 1}}</div>
+      <app-generic-input-field type="text" formControlName="title" title="Nom de l'exercice"
+                               class="name"></app-generic-input-field>
+      <app-generic-input-field class="serieNumber" type="number" formControlName="serieNumber"
+                               title="Nombre de serie"></app-generic-input-field>
+      <app-serie-form class="serie-form" [serieForm]="model.controls['objectifs']"
+                      [param]="{flexDirection:'row'}"></app-serie-form>
+      <div class="workout-delete">
+        <button *ngIf="i!==0" (click)="deleteWorkout(i)" class="delete" mat-mini-fab color="accent">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="comments">
-    <app-generic-input-field type="text" formControlName="comments" title="Commentaires"></app-generic-input-field>
-  </div>
 </form>
+<mat-dialog-actions class="footer">
+  <button mat-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">Enregistrer</button>
+</mat-dialog-actions>

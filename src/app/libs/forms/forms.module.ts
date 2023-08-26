@@ -7,14 +7,16 @@ import {MatInputModule} from '@angular/material/input';
 import { WorkoutFormComponent } from '../../views/workout-session/components/workout-form/workout-form.component';
 import { SerieFormComponent } from './serie-form/serie-form.component';
 import {MatCardModule} from '@angular/material/card';
+import { GenericTextAreaFieldComponent } from './generic-text-area-field/generic-text-area-field.component';
 
 
 @NgModule({
-            declarations: [GenericInputFieldComponent, WorkoutFormComponent, SerieFormComponent],
+            declarations: [GenericInputFieldComponent, WorkoutFormComponent, SerieFormComponent, GenericTextAreaFieldComponent],
             exports: [
               GenericInputFieldComponent,
               WorkoutFormComponent,
-              SerieFormComponent
+              SerieFormComponent,
+              GenericTextAreaFieldComponent
             ],
 			  imports: [
 				  CommonModule,

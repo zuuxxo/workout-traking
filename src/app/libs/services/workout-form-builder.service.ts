@@ -71,7 +71,7 @@ export class WorkoutFormBuilderService {
     return formArray;
   }
 
-  private buildWorkoutModelForm(workoutModel?: WorkoutModel) {
+  public buildWorkoutModelForm(workoutModel?: WorkoutModel) {
     return new FormGroup({
                            title:       new FormControl(workoutModel?.title),
                            serieNumber: new FormControl(workoutModel?.seriesNumber),

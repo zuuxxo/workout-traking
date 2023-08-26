@@ -57,10 +57,10 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
           //     j appelle la facade pour le use Case
           break;
         case ActionModelsHeader.NEW_MODEL:
-          this.dialog.open(WorkoutSessionModelFormComponent, {data: {}});
+          this.dialog.open(WorkoutSessionModelFormComponent, {data: {}, disableClose: true});
           break;
 
       }
     }
+    }
   }
-}

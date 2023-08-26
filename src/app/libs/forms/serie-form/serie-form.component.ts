@@ -10,10 +10,9 @@ import {SerieFormInterface} from './serie-form.interface';
            })
 export class SerieFormComponent {
   @Input() serieForm: FormGroup<SerieFormInterface>;
-  @Input() param: { flexDirection: 'column' | 'row' } = {flexDirection:'column'}
+  @Input() param: { flexDirection: 'column' | 'row' } = {flexDirection: 'column'};
 
-  ngOnInit(){
-    console.log(this.param);
+  ngOnInit() {
   }
 
 }

@@ -1,6 +1,17 @@
-.container {
+h1{
+margin: 10px 10px 5px 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 550px;
+}
+
+.form-container {
   padding: 20px;
-  min-height: 600px;
+  height: 100%;
 }
 
 .model {

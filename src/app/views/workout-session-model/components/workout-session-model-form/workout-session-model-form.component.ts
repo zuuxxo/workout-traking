@@ -15,16 +15,7 @@ import {
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class WorkoutSessionModelFormComponent {
-//   creer un formulaire a partir de donnée passer en data
-  /*
-   * inmputs titre
-   * formArray pour les workouts
-   *   input titre de l exercice
-   *   input pour le nb de serie
-   *   des inputs pour les objectifs
-   * inputs pour les comments
-   *
-   * */
+//   TODO responsive
   form: FormGroup<WorkoutSessionModelFormInterface>;
 
   constructor(private workoutFormBuilder: WorkoutFormBuilderService,

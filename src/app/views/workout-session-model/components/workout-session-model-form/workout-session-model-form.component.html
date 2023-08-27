@@ -1,34 +1,37 @@
-<form [formGroup]="form" class="container">
-  <div class="header">
-    <app-generic-input-field class="title" type="text" formControlName="title"
-                             title="Nom du modele"></app-generic-input-field>
-    <app-generic-text-area-field class="comments" formControlName="comments"
-                                 title="Commentaires"></app-generic-text-area-field>
-  </div>
-  <div class="workouts" formArrayName="workouts">
-    <div class="workouts-header">
-      <h2>Exercices</h2>
-      <button (click)="addWorkout()" mat-mini-fab color="primary">
-        <mat-icon>add_circle</mat-icon>
-      </button>
+<h1 >Créer votre nouveau modèle d'entrainement</h1>
+<div class="container">
+  <form [formGroup]="form" class="form-container">
+    <div class="header">
+      <app-generic-input-field class="title" type="text" formControlName="title"
+                               title="Nom du modele"></app-generic-input-field>
+      <app-generic-text-area-field class="comments" formControlName="comments"
+                                   title="Commentaires"></app-generic-text-area-field>
     </div>
-    <div class="model" *ngFor="let model of workouts.controls; let i = index" [formGroup]="model">
-      <div class="workout-number">{{i + 1}}</div>
-      <app-generic-input-field type="text" formControlName="title" title="Nom de l'exercice"
-                               class="name"></app-generic-input-field>
-      <app-generic-input-field class="serieNumber" type="number" formControlName="serieNumber"
-                               title="Nombre de serie"></app-generic-input-field>
-      <app-serie-form class="serie-form" [serieForm]="model.controls['objectifs']"
-                      [param]="{flexDirection:'row'}"></app-serie-form>
-      <div class="workout-delete">
-        <button *ngIf="i!==0" (click)="deleteWorkout(i)" class="delete" mat-mini-fab color="accent">
-          <mat-icon>delete</mat-icon>
+    <div class="workouts" formArrayName="workouts">
+      <div class="workouts-header">
+        <h2>Exercices</h2>
+        <button (click)="addWorkout()" mat-mini-fab color="primary">
+          <mat-icon>add_circle</mat-icon>
         </button>
       </div>
+      <div class="model" *ngFor="let model of workouts.controls; let i = index" [formGroup]="model">
+        <div class="workout-number">{{i + 1}}</div>
+        <app-generic-input-field type="text" formControlName="title" title="Nom de l'exercice"
+                                 class="name"></app-generic-input-field>
+        <app-generic-input-field class="serieNumber" type="number" formControlName="serieNumber"
+                                 title="Nombre de serie"></app-generic-input-field>
+        <app-serie-form class="serie-form" [serieForm]="model.controls['objectifs']"
+                        [param]="{flexDirection:'row'}"></app-serie-form>
+        <div class="workout-delete">
+          <button *ngIf="i!==0" (click)="deleteWorkout(i)" class="delete" mat-mini-fab color="accent">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</form>
-<mat-dialog-actions class="footer">
-  <button mat-button color="primary" mat-dialog-close>Cancel</button>
-  <button mat-button color="primary" [mat-dialog-close]="true">Enregistrer</button>
-</mat-dialog-actions>
+  </form>
+  <mat-dialog-actions class="footer">
+    <button mat-button color="primary" mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" [mat-dialog-close]="true">Enregistrer</button>
+  </mat-dialog-actions>
+</div>

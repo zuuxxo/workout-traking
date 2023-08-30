@@ -28,7 +28,6 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
   //  revoir les uses case et code base  du header  pas assez dry
-  // TODO ajouter trackByID
   // TODO revoir le responsive de cette vue y compris la modal de formulaire
 
   workoutSessionModels$: Observable<WorkoutSessionModel[]>;
@@ -67,5 +66,9 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
 
       }
     }
+  }
+
+  identify(_, model: WorkoutSessionModel): string {
+    return model.id;
   }
 }

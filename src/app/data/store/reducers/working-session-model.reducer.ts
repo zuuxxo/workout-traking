@@ -42,5 +42,9 @@ export const workingSessionReducer = createReducer(
   initialState,
   on(workingSessionModelActions.newModelSuccess, (state, {model}) => ({
     ...state, models: [...state.models, model]
-  }))
+  })),
+  on(workingSessionModelActions.deleteModelSuccess, (state, {id}) => {
+    const newModels = state.models.filter((model) => model.id !== id);
+    return {...state, models: newModels};
+  })
 );

@@ -5,7 +5,10 @@ import {WorkoutSessionModel} from '../../../domain/model/workout-session-model';
 export const workingSessionModelActions = createActionGroup({
                                                               source: 'Working-session-model',
                                                               events: {
-                                                                load:            emptyProps(),
-                                                                newModelSuccess: props<{ model: WorkoutSessionModel }>()
+                                                                load:               emptyProps(),
+                                                                newModelSuccess:    props<{
+                                                                  model: WorkoutSessionModel
+                                                                }>(),
+                                                                deleteModelSuccess: props<{ id: string }>()
                                                               }
                                                             });

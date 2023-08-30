@@ -71,4 +71,8 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   identify(_, model: WorkoutSessionModel): string {
     return model.id;
   }
+
+  deleteWorkoutSessionModel(id: string): void {
+    this.workoutSessionModelFacade.deleteWorkoutSessionModel(id);
+  }
 }

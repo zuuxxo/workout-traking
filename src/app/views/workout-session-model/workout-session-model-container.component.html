@@ -2,5 +2,5 @@
             (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <div class="container">
   <app-workout-session-model class="workout" *ngFor="let workoutSessionModel of workoutSessionModels$|async; trackBy: identify"
-                             [workoutSessionModel]="workoutSessionModel"></app-workout-session-model>
+                             [workoutSessionModel]="workoutSessionModel" (deleteEvent)="deleteWorkoutSessionModel($event)"></app-workout-session-model>
 </div>

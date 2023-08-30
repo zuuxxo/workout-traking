@@ -50,6 +50,7 @@ export class WorkoutFormBuilderService {
 
   public buildWorkoutSessionModelForm(model: WorkoutSessionModel): FormGroup<WorkoutSessionModelFormInterface> {
     return new FormGroup({
+                           id:       new FormControl<string>(model?.id),
                            title:    new FormControl<string>(model?.title),
                            workouts: model ?
                                      this.buildWorkoutModelFormArray(model.workouts) :

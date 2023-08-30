@@ -1,6 +1,6 @@
 <app-header [navigationItems]="navigationsItems" [title]="view.value"
             (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <div class="container">
-  <app-workout-session-model class="workout-list" *ngFor="let workoutSessionModel of workoutSessionModels$|async"
+  <app-workout-session-model class="workout" *ngFor="let workoutSessionModel of workoutSessionModels$|async"
                              [workoutSessionModel]="workoutSessionModel"></app-workout-session-model>
 </div>

@@ -8,6 +8,7 @@ export interface workoutModelForm {
 }
 
 export interface WorkoutSessionModelFormInterface {
+  id: FormControl<string>;
   title: FormControl<string>;
   workouts: FormArray<FormGroup<workoutModelForm>>;
   comments: FormControl<string>;

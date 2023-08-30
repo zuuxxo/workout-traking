@@ -15,7 +15,7 @@ import {
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class WorkoutSessionModelFormComponent {
-//   TODO responsive
+//   TODO refacto le scss
   form: FormGroup<WorkoutSessionModelFormInterface>;
 
   constructor(private workoutFormBuilder: WorkoutFormBuilderService,
@@ -28,9 +28,6 @@ export class WorkoutSessionModelFormComponent {
   }
 
   ngOnInit() {
-    console.log(this.form);
-    this.form.valueChanges.subscribe((res) => console.log(res));
-
   }
 
   addWorkout(): void {

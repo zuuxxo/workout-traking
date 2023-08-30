@@ -28,7 +28,8 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
   //  revoir les uses case et code base  du header  pas assez dry
-  // revoir le service de creation de formulai
+  // TODO ajouter trackByID
+  // TODO revoir le responsive de cette vue y compris la modal de formulaire
 
   workoutSessionModels$: Observable<WorkoutSessionModel[]>;
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
@@ -57,7 +58,11 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
           //     j appelle la facade pour le use Case
           break;
         case ActionModelsHeader.NEW_MODEL:
-          this.dialog.open(WorkoutSessionModelFormComponent, {data: {}, disableClose: true, height: "600px"});
+          const dialogRef = this.dialog.open(WorkoutSessionModelFormComponent,
+                                             {data: {}, disableClose: true, height: '600px'});
+          dialogRef.afterClosed().subscribe((result: WorkoutSessionModel) => {
+            this.workoutSessionModelFacade.newWorkoutSessionModel(result);
+          });
           break;
 
       }

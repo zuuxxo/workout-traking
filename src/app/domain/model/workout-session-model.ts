@@ -5,4 +5,5 @@ export class WorkoutSessionModel {
   workouts: WorkoutModel[];
   creationDate: Date;
   comments: string;
+  id?: string;
 }

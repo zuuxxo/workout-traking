@@ -1,4 +1,4 @@
-mat-card{
+mat-card {
   margin: 5px 0;
 }
 
@@ -12,6 +12,11 @@ mat-card{
   padding: 0 5px;
   display: flex;
   justify-content: space-between;
+
+  .delete {
+    cursor: pointer;
+  }
+
 }
 
 .models {
@@ -19,7 +24,14 @@ mat-card{
   flex: 4
 }
 
-
+.edit {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+  span {
+    cursor: pointer;
+  }
+}
 
 .comments {
   text-align: center;

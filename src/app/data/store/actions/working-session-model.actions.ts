@@ -9,6 +9,7 @@ export const workingSessionModelActions = createActionGroup({
                                                                 newModelSuccess:    props<{
                                                                   model: WorkoutSessionModel
                                                                 }>(),
-                                                                deleteModelSuccess: props<{ id: string }>()
+                                                                deleteModelSuccess: props<{ id: string }>(),
+                                                                updateModelSuccess: props<{model: WorkoutSessionModel}>()
                                                               }
                                                             });

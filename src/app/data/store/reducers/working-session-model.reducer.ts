@@ -46,5 +46,11 @@ export const workingSessionReducer = createReducer(
   on(workingSessionModelActions.deleteModelSuccess, (state, {id}) => {
     const newModels = state.models.filter((model) => model.id !== id);
     return {...state, models: newModels};
+  }),
+  on(workingSessionModelActions.updateModelSuccess, (state, {model}) => {
+    const newModels = state.models.map((m: WorkoutSessionModel) => {
+      return m.id === model.id ? model : m;
+    });
+    return {...state, models: newModels};
   })
 );

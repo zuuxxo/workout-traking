@@ -4,7 +4,7 @@
       <span
         *ngIf="workoutSessionModel.creationDate">créé le  {{workoutSessionModel.creationDate|date:'shortDate' }}</span>
     </div>
-    <span (click)="deleteModel(workoutSessionModel.id)"><mat-icon>delete</mat-icon></span>
+    <span class="delete" (click)="deleteModel(workoutSessionModel.id)"><mat-icon>delete</mat-icon></span>
   </mat-card-title>
   <mat-card-content class="container">
     <div class="models">
@@ -22,5 +22,8 @@
       {{workoutSessionModel.comments}}
     </div>
   </mat-card-content>
+  <div (click)="editModel(workoutSessionModel)" class="edit">
+    <span ><mat-icon>edit</mat-icon></span>
+  </div>
 </mat-card>
 

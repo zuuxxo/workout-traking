@@ -4,12 +4,14 @@ import {Observable} from 'rxjs';
 import {DisplayWorkoutSessionModelsUseCase} from './display-workout-session-models-use-case';
 import {NewWorkoutSessionModelUseCase} from './new-workout-session-model-use-case';
 import {DeleteWorkoutSessionUseCase} from './delete-workout-session-use-case';
+import {UpdateWorkoutSessionModelUseCase} from './update-workout-session-model-use-case';
 
 @Injectable({providedIn: 'root'})
 export class WorkoutSessionModelFacadeService {
   constructor(private displayWorkoutSession: DisplayWorkoutSessionModelsUseCase,
               private newModelUseCase: NewWorkoutSessionModelUseCase,
-              private deleteModelUseCase: DeleteWorkoutSessionUseCase
+              private deleteModelUseCase: DeleteWorkoutSessionUseCase,
+              private updateModelUseCase: UpdateWorkoutSessionModelUseCase
   ) {
   }
 
@@ -23,6 +25,10 @@ export class WorkoutSessionModelFacadeService {
 
   deleteWorkoutSessionModel(id: string): void {
     this.deleteModelUseCase.execute(id);
+  }
+
+  updateWorkoutSessionModel(model: WorkoutSessionModel): void {
+    this.updateModelUseCase.execute(model);
   }
 
 }

@@ -10,12 +10,18 @@ import {WorkoutSessionModel} from '../../../../domain/model/workout-session-mode
 export class WorkoutSessionModelComponent {
   @Input() workoutSessionModel: WorkoutSessionModel;
   @Output() deleteEvent: EventEmitter<string>;
+  @Output() editEvent: EventEmitter<WorkoutSessionModel>;
 
   constructor() {
     this.deleteEvent = new EventEmitter<string>();
+    this.editEvent   = new EventEmitter<WorkoutSessionModel>();
   }
 
   deleteModel(id: string): void {
     this.deleteEvent.emit(id);
+  }
+
+  editModel(workoutSessionModel: WorkoutSessionModel): void {
+    this.editEvent.emit(workoutSessionModel);
   }
 }

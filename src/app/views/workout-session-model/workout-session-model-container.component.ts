@@ -23,7 +23,6 @@ import {
            })
 export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAbstractComponent {
   // TODO deplacer les facades dans les uses cases ? ou ailleurs pour les reuntiliser.
-  // TODO ajouter date de creation et commentaires  au model d entrainement
   // TODO creer une interface a implementer pour les use case
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
@@ -47,7 +46,7 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   }
 
 
-  navigationOnClick(item: ActionHeaderInterface | NavigationHeaderInterface) {
+  navigationOnClick(item: ActionHeaderInterface | NavigationHeaderInterface): void {
     if (item.key === 'NAVIGATION') {
       this.router.navigate([item.payload]);
     }
@@ -60,6 +59,7 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
           const dialogRef = this.dialog.open(WorkoutSessionModelFormComponent,
                                              {data: {}, disableClose: true, height: '600px'});
           dialogRef.afterClosed().subscribe((result: WorkoutSessionModel) => {
+            console.log(result, 'new');
             this.workoutSessionModelFacade.newWorkoutSessionModel(result);
           });
           break;
@@ -68,11 +68,20 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
     }
   }
 
-  identify(_, model: WorkoutSessionModel): string {
+  identify(index: number, model: WorkoutSessionModel): string {
     return model.id;
   }
 
   deleteWorkoutSessionModel(id: string): void {
     this.workoutSessionModelFacade.deleteWorkoutSessionModel(id);
+  }
+
+  updateWorkoutSessionModel(model: WorkoutSessionModel): void {
+    const dialogRef = this.dialog.open(WorkoutSessionModelFormComponent,
+                                       {data: model, disableClose: true, height: '600px'});
+    dialogRef.afterClosed().subscribe((result: WorkoutSessionModel) => {
+      console.log(result, 'update');
+      this.workoutSessionModelFacade.updateWorkoutSessionModel(result);
+    });
   }
 }

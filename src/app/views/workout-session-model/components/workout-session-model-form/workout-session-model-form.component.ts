@@ -28,6 +28,7 @@ export class WorkoutSessionModelFormComponent {
   }
 
   ngOnInit() {
+    this.form.valueChanges.subscribe((res) => console.log(res));
   }
 
   addWorkout(): void {

@@ -1,9 +1,9 @@
 export class Serie {
 
-  constructor() {
-    this.weight = null;
-    this.reps   = null;
-    this.rest   = null;
+  constructor(weight: number, reps: number, rest: number) {
+    this.weight = weight;
+    this.reps   = reps;
+    this.rest   = rest;
   }
 
   weight: number;

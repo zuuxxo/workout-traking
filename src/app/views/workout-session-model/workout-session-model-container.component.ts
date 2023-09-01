@@ -28,6 +28,7 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
   // creer une page pour gerer l affichage des entraienements realises
   //  revoir les uses case et code base  du header  pas assez dry
   // TODO revoir le responsive de cette vue y compris la modal de formulaire
+  // revoir UI et UX des boutons de gestion sur chaque model
 
   workoutSessionModels$: Observable<WorkoutSessionModel[]>;
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
@@ -83,5 +84,10 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
       console.log(result, 'update');
       this.workoutSessionModelFacade.updateWorkoutSessionModel(result);
     });
+  }
+
+  selectWorkoutSessionModel(model: WorkoutSessionModel): void {
+    console.log(model);
+
   }
 }

@@ -1,29 +1,33 @@
-<mat-card>
-  <mat-card-title class="title">
-    <div>{{workoutSessionModel.title|titlecase}}
-      <span
-        *ngIf="workoutSessionModel.creationDate">créé le  {{workoutSessionModel.creationDate|date:'shortDate' }}</span>
-    </div>
-    <span class="delete" (click)="deleteModel(workoutSessionModel.id)"><mat-icon>delete</mat-icon></span>
-  </mat-card-title>
-  <mat-card-content class="container">
-    <div class="models">
-      <div class="title-container">
-        <div class="workout-title">Exercices</div>
-        <div class="series-title">Series</div>
-        <div class="objectifs-title">Objectifs</div>
+<div class="container">
+  <mat-card>
+    <mat-card-title class="title">
+      <div>{{workoutSessionModel.title|titlecase}}
+        <span
+          *ngIf="workoutSessionModel.creationDate">créé le  {{workoutSessionModel.creationDate|date:'shortDate' }}</span>
       </div>
-      <div>
-        <app-workout-model *ngFor="let workout of workoutSessionModel.workouts; let i = index"
-                           [workoutModel]="workout"></app-workout-model>
+      <span (click)="selectModel(workoutSessionModel)" class="select"><mat-icon>done</mat-icon></span>
+    </mat-card-title>
+    <mat-card-content class="content">
+      <div class="models">
+        <div class="title-container">
+          <div class="workout-title">Exercices</div>
+          <div class="series-title">Series</div>
+          <div class="objectifs-title">Objectifs</div>
+        </div>
+        <div>
+          <app-workout-model *ngFor="let workout of workoutSessionModel.workouts; let i = index"
+                             [workoutModel]="workout"></app-workout-model>
+        </div>
       </div>
+      <div class="comments">
+        {{workoutSessionModel.comments}}
+      </div>
+    </mat-card-content>
+    <div  class="update">
+      <span class="edit" (click)="editModel(workoutSessionModel)"><mat-icon>edit</mat-icon></span>
+      <span class="delete" (click)="deleteModel(workoutSessionModel.id)"><mat-icon>delete</mat-icon></span>
     </div>
-    <div class="comments">
-      {{workoutSessionModel.comments}}
-    </div>
-  </mat-card-content>
-  <div (click)="editModel(workoutSessionModel)" class="edit">
-    <span ><mat-icon>edit</mat-icon></span>
-  </div>
-</mat-card>
+  </mat-card>
 
+
+</div>

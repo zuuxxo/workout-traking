@@ -1,8 +1,15 @@
-mat-card {
-  margin: 5px 0;
+.container {
+  :hover {
+    background-color: #f3f3f6;
+  }
 }
 
-.container {
+mat-card {
+  margin: 5px 0;
+
+}
+
+.content {
   display: flex;
   padding-top: 5px;
 }
@@ -24,13 +31,21 @@ mat-card {
   flex: 4
 }
 
-.edit {
+.update {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-right: 5px;
+
   span {
     cursor: pointer;
   }
+}
+.edit{
+  margin-left: 5px;
+}
+
+.select{
+  cursor: pointer;
 }
 
 .comments {

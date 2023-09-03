@@ -88,6 +88,6 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
 
   selectWorkoutSessionModel(model: WorkoutSessionModel): void {
     console.log(model);
-
+    this.workoutSessionModelFacade.setActiveSession(model);
   }
 }

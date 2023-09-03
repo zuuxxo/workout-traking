@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {selectWorkoutSessionModels} from '../../../data/store/selectors/working-session-model.selectors';
+import {selectWorkoutSessionModels} from '../../../data/store/selectors/workout-session-model.selectors';
 import {Observable} from 'rxjs';
 import {WorkoutSessionModel} from '../../model/workout-session-model';
 import {Store} from '@ngrx/store';

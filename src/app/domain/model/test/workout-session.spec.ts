@@ -1,6 +1,5 @@
 import {Workout} from '../workout';
 import {WorkoutSession} from '../workout-session';
-import {Serie} from '../serie';
 
 
 describe('WorkoutSession', () => {

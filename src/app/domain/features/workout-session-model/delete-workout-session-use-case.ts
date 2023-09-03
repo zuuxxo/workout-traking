@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {workingSessionModelActions} from '../../../data/store/actions/working-session-model.actions';
+import {workoutSessionModelActions} from '../../../data/store/actions/workout-session-model.actions';
 
 @Injectable({providedIn: 'root'})
 export class DeleteWorkoutSessionUseCase {
@@ -8,6 +8,6 @@ export class DeleteWorkoutSessionUseCase {
   }
 
   execute(id: string): void {
-    this.store.dispatch(workingSessionModelActions.deleteModelSuccess({id}));
+    this.store.dispatch(workoutSessionModelActions.deleteModelSuccess({id}));
   }
 }

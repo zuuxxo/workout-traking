@@ -1,7 +1,7 @@
 import {Store} from '@ngrx/store';
 import {WorkoutSessionModel} from '../../model/workout-session-model';
 import {Injectable} from '@angular/core';
-import {workingSessionModelActions} from '../../../data/store/actions/working-session-model.actions';
+import {workoutSessionModelActions} from '../../../data/store/actions/workout-session-model.actions';
 import {v4 as uuidv4} from 'uuid';
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class NewWorkoutSessionModelUseCase {
   execute(model: WorkoutSessionModel): void {
     const id           = uuidv4();
     const creationDate = new Date();
-    this.store.dispatch(workingSessionModelActions.newModelSuccess({model: {...model, id, creationDate}}));
+    this.store.dispatch(workoutSessionModelActions.newModelSuccess({model: {...model, id, creationDate}}));
   }
 
 }

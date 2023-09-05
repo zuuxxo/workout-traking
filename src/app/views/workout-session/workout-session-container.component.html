@@ -1,10 +1,4 @@
 <app-header [navigationItems]="navigationsItems" title="Workout Session"
             (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <app-timer></app-timer>
-<div class="container" *ngIf="workoutSessionFormArray" [formGroup]="workoutSessionForm">
-  <!--  <app-workout *ngFor="let workout of workoutSessionForm.controls" [workout]="workout.value"></app-workout>-->
-  <ng-container *ngFor="let workout of workoutSessionFormArray.controls; let i=index">
-    <app-workout-form
-      [workoutForm]="workout"></app-workout-form>
-  </ng-container>
-</div>
+<app-workout-session [workoutSession]="activeWorkoutSession$|async"></app-workout-session>

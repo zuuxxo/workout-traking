@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {SerieFormInterface} from '../../../../libs/forms/serie-form/serie-form.interface';
-import {WorkoutFormInterface} from './workout-form.interface';
+import {WorkoutFormInterface} from '../../../../libs/forms/interfaces/workout-form.interface';
 
 @Component({
              selector:        'app-workout-form',

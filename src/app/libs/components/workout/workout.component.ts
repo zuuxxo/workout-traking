@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Workout} from '../../../../domain/model/workout';
+import {Workout} from '../../../domain/model/workout';
 
 @Component({
              selector:        'app-workout',

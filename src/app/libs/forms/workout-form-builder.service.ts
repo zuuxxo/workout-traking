@@ -2,25 +2,31 @@ import {Injectable} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Workout} from '../../domain/model/workout';
 import {Serie} from '../../domain/model/serie';
-import {WorkoutFormInterface} from '../../views/workout-session/components/workout-form/workout-form.interface';
-import {SerieFormInterface} from '../forms/serie-form/serie-form.interface';
-import {WorkoutSessionFormInterface} from '../forms/workout-session-form.interface';
+import {WorkoutFormInterface} from './interfaces/workout-form.interface';
+import {SerieFormInterface} from './serie-form/serie-form.interface';
+import {WorkoutSessionFormInterface} from './interfaces/workout-session-form.interface';
 import {WorkoutSessionModel} from '../../domain/model/workout-session-model';
 import {WorkoutModel} from '../../domain/model/workout-model';
-import {workoutModelForm, WorkoutSessionModelFormInterface} from './workout-session-model-form.interface';
+import {workoutModelForm, WorkoutSessionModelFormInterface} from './interfaces/workout-session-model-form.interface';
+import {WorkoutSession} from '../../domain/model/workout-session';
 
 @Injectable({
               providedIn: 'root'
             })
 export class WorkoutFormBuilderService {
 
-  buildWorkoutSessionForm(workouts: Workout[]): FormGroup<WorkoutSessionFormInterface> {
+  buildWorkoutSessionForm(workoutsSession: WorkoutSession): FormGroup<WorkoutSessionFormInterface> {
+    const startTime = performance.now();
     const formArray = new FormArray<FormGroup<WorkoutFormInterface>>([]);
-    workouts.forEach((workout: Workout) => {
+    workoutsSession.workouts.forEach((workout: Workout) => {
       formArray.push(this.buildWorkoutForm(workout));
     });
+    const duration = performance.now() - startTime;
+    console.log(duration, 'build form session');
     return new FormGroup({
-                           workoutSession: formArray
+                           title:    new FormControl(workoutsSession.title),
+                           workouts: formArray,
+                           date:     new FormControl<Date>(workoutsSession.date)
                          });
   }
 

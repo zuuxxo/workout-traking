@@ -4,13 +4,13 @@ import {WorkoutModel} from './workout-model';
 
 export class WorkoutSession {
   title: string;
-  date?: Date;
+  date: Date;
   workouts: Workout[];
   #model: WorkoutSessionModel;
 
   constructor(model: WorkoutSessionModel) {
     this.date     = new Date();
-    this.#model    = model;
+    this.#model   = model;
     this.workouts = this.builWorkoutSessionFromWorkoutSessionModel();
     this.title    = `workout session ${model.title}`;
   }

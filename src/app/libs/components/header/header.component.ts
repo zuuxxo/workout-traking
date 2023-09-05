@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {ActionHeaderInterface} from '../../../domain/features/header/action-header.interface';
 import {NavigationHeaderInterface} from '../../../domain/features/header/navigation-header.interface';
 

@@ -13,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {
   WorkoutSessionModelFormComponent
 } from './components/workout-session-model-form/workout-session-model-form.component';
-import {ViewEnum} from "../../domain/features/header/view.enum";
+import {WorkoutFormBuilderService} from '../../libs/forms/workout-form-builder.service';
 
 @Component({
              selector:        'app-workout-session-model-container',
@@ -34,6 +34,7 @@ export class WorkoutSessionModelContainerComponent {
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
 
   constructor(private workoutSessionModelFacade: WorkoutSessionModelFacadeService,
+              private workoutFormBuilder: WorkoutFormBuilderService,
               private headerFacade: HeaderFacadeService,
               private router: Router,
               public dialog: MatDialog) {
@@ -59,8 +60,9 @@ export class WorkoutSessionModelContainerComponent {
           const dialogRef = this.dialog.open(WorkoutSessionModelFormComponent,
                                              {data: {}, disableClose: true, height: '600px'});
           dialogRef.afterClosed().subscribe((result: WorkoutSessionModel) => {
-            console.log(result, 'new');
-            this.workoutSessionModelFacade.newWorkoutSessionModel(result);
+            if (result) {
+              this.workoutSessionModelFacade.newWorkoutSessionModel(result);
+            }
           });
           break;
 
@@ -80,13 +82,13 @@ export class WorkoutSessionModelContainerComponent {
     const dialogRef = this.dialog.open(WorkoutSessionModelFormComponent,
                                        {data: model, disableClose: true, height: '600px'});
     dialogRef.afterClosed().subscribe((result: WorkoutSessionModel) => {
-      console.log(result, 'update');
-      this.workoutSessionModelFacade.updateWorkoutSessionModel(result);
+      if (result) {
+        this.workoutSessionModelFacade.updateWorkoutSessionModel(result);
+      }
     });
   }
 
   selectWorkoutSessionModel(model: WorkoutSessionModel): void {
-    console.log(model);
     this.workoutSessionModelFacade.setActiveSession(model);
   }
 }

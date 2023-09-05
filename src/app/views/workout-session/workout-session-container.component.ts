@@ -1,13 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {WorkoutSessionFacadeService} from './workout-session-facade.service';
-import {FormArray, FormGroup} from '@angular/forms';
-import {WorkoutFormInterface} from './components/workout-form/workout-form.interface';
-import {WorkoutSessionFormInterface} from '../../libs/forms/workout-session-form.interface';
+import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
 import {ActionHeaderInterface} from '../../domain/features/header/action-header.interface';
 import {NavigationHeaderInterface} from '../../domain/features/header/navigation-header.interface';
 import {HeaderFacadeService} from '../../domain/features/header/header-facade.service';
 import {Router} from '@angular/router';
-import {ViewEnum} from "../../domain/features/header/view.enum";
+import {Observable} from 'rxjs';
+import {WorkoutSession} from '../../domain/model/workout-session';
+import {WorkoutSessionFacadeService} from '../../domain/features/workout-session/workout-session-facade.service';
 
 @Component({
              selector:        'app-workout-session-container',
@@ -16,25 +15,23 @@ import {ViewEnum} from "../../domain/features/header/view.enum";
              changeDetection: ChangeDetectionStrategy.OnPush
            })
 export class WorkoutSessionContainerComponent {
-  workoutSessionForm: FormGroup<WorkoutSessionFormInterface>;
+  activeWorkoutSession$: Observable<WorkoutSession>;
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
 
   constructor(private workoutSessionFacade: WorkoutSessionFacadeService,
               private headerFacade: HeaderFacadeService,
               private router: Router) {
+    this.activeWorkoutSession$ = this.workoutSessionFacade.activeSession;
+
   }
+
+  // TODO revoir probleme de perf du header
 
 
   ngOnInit() {
-    this.workoutSessionForm = this.workoutSessionFacade.getWorkouSessionForm();
-    this.navigationsItems   = this.headerFacade.getHeaderByView(ViewEnum.SESSION);
-
-    this.workoutSessionFormArray.valueChanges.subscribe((v) => console.log(v));
+    this.navigationsItems = this.headerFacade.getHeaderByView(this.view.key);
   }
 
-  get workoutSessionFormArray(): FormArray<FormGroup<WorkoutFormInterface>> {
-    return this.workoutSessionForm.get('workoutSession') as FormArray<FormGroup<WorkoutFormInterface>>;
-  }
 
   navigationOnClick(item: ActionHeaderInterface | NavigationHeaderInterface) {
     if (item.key === 'NAVIGATION') {

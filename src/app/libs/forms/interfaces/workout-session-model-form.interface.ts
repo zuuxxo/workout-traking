@@ -1,5 +1,5 @@
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
-import {SerieFormInterface} from '../forms/serie-form/serie-form.interface';
+import {SerieFormInterface} from '../serie-form/serie-form.interface';
 
 export interface workoutModelForm {
   title: FormControl<string>;

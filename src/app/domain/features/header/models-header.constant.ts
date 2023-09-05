@@ -1,8 +1,3 @@
-// aller sur a page workout session et home
-// creer un nouveau model
-// commencer un entrainemebt libre
-
-
 import {ActionHeaderInterface} from './action-header.interface';
 import {NavigationHeaderInterface} from './navigation-header.interface';
 
@@ -14,7 +9,7 @@ export const enum ActionModelsHeader {
 export const ModelsHeaderConstant: Array<ActionHeaderInterface | NavigationHeaderInterface> = [
   {
     key:     'NAVIGATION',
-    value:   "Vers l'entrainement",
+    value:   'Vers l\'entrainement',
     payload: '/session'
   },
   {

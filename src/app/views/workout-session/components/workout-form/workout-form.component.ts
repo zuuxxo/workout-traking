@@ -20,9 +20,8 @@ import {WorkoutFormInterface} from '../../../../libs/forms/interfaces/workout-fo
 export class WorkoutFormComponent {
   @Input() workoutForm: FormGroup<WorkoutFormInterface>;
 
-  get series(): FormGroup[] {
-    const formArray = this.workoutForm.get('series') as FormArray;
-    return formArray.controls as FormGroup<SerieFormInterface>[];
+  get series(): FormArray<FormGroup<SerieFormInterface>> {
+    return this.workoutForm.get('series') as FormArray<FormGroup<SerieFormInterface>>;
   }
 
 }

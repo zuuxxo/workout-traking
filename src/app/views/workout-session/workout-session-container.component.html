@@ -1,4 +1,4 @@
-<app-header [navigationItems]="navigationsItems" [title]="view.value"
+<app-header [navigationItems]="navigationsItems" title="Workout Session"
             (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <app-timer></app-timer>
 <div class="container" *ngIf="workoutSessionFormArray" [formGroup]="workoutSessionForm">

@@ -1,7 +1,8 @@
-<app-header [navigationItems]="navigationsItems" [title]="view.value"
+<app-header [navigationItems]="navigationsItems" title="Workout Session Model"
             (selectedNavigationItem)="navigationOnClick($event)"></app-header>
 <div class="container">
-  <app-workout-session-model class="workout" *ngFor="let workoutSessionModel of workoutSessionModels$|async; trackBy: identify"
+  <app-workout-session-model class="workout"
+                             *ngFor="let workoutSessionModel of workoutSessionModels$|async; trackBy: identify"
                              [workoutSessionModel]="workoutSessionModel"
                              (deleteEvent)="deleteWorkoutSessionModel($event)"
                              (editEvent)="updateWorkoutSessionModel($event)"

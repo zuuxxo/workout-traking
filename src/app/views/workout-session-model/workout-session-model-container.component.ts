@@ -9,11 +9,11 @@ import {NavigationHeaderInterface} from '../../domain/features/header/navigation
 import {ActionModelsHeader} from '../../domain/features/header/models-header.constant';
 import {Router} from '@angular/router';
 import {HeaderFacadeService} from '../../domain/features/header/header-facade.service';
-import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
 import {MatDialog} from '@angular/material/dialog';
 import {
   WorkoutSessionModelFormComponent
 } from './components/workout-session-model-form/workout-session-model-form.component';
+import {ViewEnum} from "../../domain/features/header/view.enum";
 
 @Component({
              selector:        'app-workout-session-model-container',
@@ -21,7 +21,7 @@ import {
              styleUrls:       ['./workout-session-model-container.component.scss'],
              changeDetection: ChangeDetectionStrategy.OnPush
            })
-export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAbstractComponent {
+export class WorkoutSessionModelContainerComponent {
   // TODO deplacer les facades dans les uses cases ? ou ailleurs pour les reuntiliser.
   // TODO creer une interface a implementer pour les use case
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
@@ -37,11 +37,10 @@ export class WorkoutSessionModelContainerComponent extends ContainerWithHeaderAb
               private headerFacade: HeaderFacadeService,
               private router: Router,
               public dialog: MatDialog) {
-    super();
   }
 
   ngOnInit() {
-    this.navigationsItems      = this.headerFacade.getHeaderByView(this.view.key);
+    this.navigationsItems      = this.headerFacade.getHeaderByView(ViewEnum.MODELS);
     this.workoutSessionModels$ = this.workoutSessionModelFacade.workoutSessionModels;
     this.workoutSessionModels$.subscribe((res) => console.log(res));
   }

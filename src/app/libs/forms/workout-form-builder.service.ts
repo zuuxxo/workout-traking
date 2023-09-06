@@ -78,10 +78,10 @@ export class WorkoutFormBuilderService {
     return formArray;
   }
 
-  public buildWorkoutModelForm(workoutModel?: WorkoutModel) {
+  public buildWorkoutModelForm(workoutModel?: WorkoutModel)  {
     return new FormGroup({
                            title:       new FormControl(workoutModel?.title),
-                           serieNumber: new FormControl(workoutModel?.seriesNumber),
+                           seriesNumber: new FormControl(workoutModel?.seriesNumber),
                            objectifs:   this.buildSerieForm(workoutModel?.objectifs)
                          });
   }

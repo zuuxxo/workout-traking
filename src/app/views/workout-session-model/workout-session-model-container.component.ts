@@ -13,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {
   WorkoutSessionModelFormComponent
 } from './components/workout-session-model-form/workout-session-model-form.component';
-import {WorkoutFormBuilderService} from '../../libs/forms/workout-form-builder.service';
+import {ViewEnum} from "../../domain/features/header/view.enum";
 
 @Component({
              selector:        'app-workout-session-model-container',
@@ -34,14 +34,13 @@ export class WorkoutSessionModelContainerComponent {
   navigationsItems: Array<ActionHeaderInterface | NavigationHeaderInterface>;
 
   constructor(private workoutSessionModelFacade: WorkoutSessionModelFacadeService,
-              private workoutFormBuilder: WorkoutFormBuilderService,
               private headerFacade: HeaderFacadeService,
               private router: Router,
               public dialog: MatDialog) {
+    this.navigationsItems = this.headerFacade.getHeaderByView(ViewEnum.MODELS);
   }
 
   ngOnInit() {
-    this.navigationsItems      = this.headerFacade.getHeaderByView(ViewEnum.MODELS);
     this.workoutSessionModels$ = this.workoutSessionModelFacade.workoutSessionModels;
     this.workoutSessionModels$.subscribe((res) => console.log(res));
   }

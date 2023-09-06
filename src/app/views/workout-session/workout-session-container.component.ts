@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {ContainerWithHeaderAbstractComponent} from '../container-with-header.abstract.component';
 import {ActionHeaderInterface} from '../../domain/features/header/action-header.interface';
 import {NavigationHeaderInterface} from '../../domain/features/header/navigation-header.interface';
 import {HeaderFacadeService} from '../../domain/features/header/header-facade.service';
@@ -7,6 +6,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {WorkoutSession} from '../../domain/model/workout-session';
 import {WorkoutSessionFacadeService} from '../../domain/features/workout-session/workout-session-facade.service';
+import {ViewEnum} from "../../domain/features/header/view.enum";
 
 @Component({
              selector:        'app-workout-session-container',
@@ -22,14 +22,14 @@ export class WorkoutSessionContainerComponent {
               private headerFacade: HeaderFacadeService,
               private router: Router) {
     this.activeWorkoutSession$ = this.workoutSessionFacade.activeSession;
-
+    this.navigationsItems = this.headerFacade.getHeaderByView(ViewEnum.SESSION);
   }
 
-  // TODO revoir probleme de perf du header
-
-
+  // TODO revoir probleme de perf
+  // TODO revoir l enregistremebt des nombres /les parser en number au lieu de string
+  // TODO clean les log et pb de perf
   ngOnInit() {
-    this.navigationsItems = this.headerFacade.getHeaderByView(this.view.key);
+
   }
 
 

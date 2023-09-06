@@ -3,7 +3,7 @@ import {SerieFormInterface} from '../serie-form/serie-form.interface';
 
 export interface workoutModelForm {
   title: FormControl<string>;
-  serieNumber: FormControl<number>;
+  seriesNumber: FormControl<number>;
   objectifs: FormGroup<SerieFormInterface>;
 }
 

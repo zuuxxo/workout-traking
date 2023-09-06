@@ -13,8 +13,7 @@ export class SelectWorkoutSessionModelUseCase {
   }
 
   execute(model: WorkoutSessionModel): void {
-    const session = new WorkoutSession(model
-    );
+    const session = new WorkoutSession(model);
     this.store.dispatch(activeWorkoutSessionActions.setActiveSession({session}));
     this.router.navigate(['/session']);
     //   TODO ajouter le routing ici / + voir le comportement a mettre en oeuvre lorsque l'enregistrement en BDD aura

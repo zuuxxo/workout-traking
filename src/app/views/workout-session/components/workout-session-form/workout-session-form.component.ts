@@ -19,11 +19,14 @@ export class WorkoutSessionFormComponent {
   }
 
   ngOnInit() {
+    const startTime = performance.now();
+
     console.log('init');
-    this.workoutSessionForm = this.workoutSession ? this.workoutFormBuilder.buildWorkoutSessionForm(this.workoutSession)
-                                                  : null;
-    // this.workoutSessionForm.valueChanges.subscribe((res) => console.log(res));
+    this.workoutSessionForm = this.workoutFormBuilder.buildWorkoutSessionForm(this.workoutSession)
+    this.workoutSessionForm.valueChanges.subscribe((res) => console.log(res));
     //   TODO [Violation] 'click' handler took 293ms
+    const duration = performance.now() - startTime;
+    console.log(duration, "ng oniit")
   }
 
   get workoutSessionFormArray(): FormArray<FormGroup<WorkoutFormInterface>> {

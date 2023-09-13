@@ -16,13 +16,10 @@ import {WorkoutSession} from '../../domain/model/workout-session';
 export class WorkoutFormBuilderService {
 
   buildWorkoutSessionForm(workoutsSession: WorkoutSession): FormGroup<WorkoutSessionFormInterface> {
-    const startTime = performance.now();
     const formArray = new FormArray<FormGroup<WorkoutFormInterface>>([]);
     workoutsSession.workouts.forEach((workout: Workout) => {
       formArray.push(this.buildWorkoutForm(workout));
     });
-    const duration = performance.now() - startTime;
-    console.log(duration, 'build form session');
     return new FormGroup({
                            title:    new FormControl(workoutsSession.title),
                            workouts: formArray,
@@ -78,11 +75,11 @@ export class WorkoutFormBuilderService {
     return formArray;
   }
 
-  public buildWorkoutModelForm(workoutModel?: WorkoutModel)  {
+  public buildWorkoutModelForm(workoutModel?: WorkoutModel) {
     return new FormGroup({
-                           title:       new FormControl(workoutModel?.title),
+                           title:        new FormControl(workoutModel?.title),
                            seriesNumber: new FormControl(workoutModel?.seriesNumber),
-                           objectifs:   this.buildSerieForm(workoutModel?.objectifs)
+                           objectifs:    this.buildSerieForm(workoutModel?.objectifs)
                          });
   }
 }

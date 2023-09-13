@@ -7,6 +7,7 @@ import {
   workoutModelForm,
   WorkoutSessionModelFormInterface
 } from '../../../../libs/forms/interfaces/workout-session-model-form.interface';
+import {WorkoutModel} from "../../../../domain/model/workout-model";
 
 @Component({
              selector:        'app-workout-session-form',
@@ -27,15 +28,27 @@ export class WorkoutSessionModelFormComponent {
     return this.form.get('workouts') as FormArray<FormGroup<workoutModelForm>>;
   }
 
-  ngOnInit() {
-    this.form.valueChanges.subscribe((res) => console.log(res));
-  }
-
   addWorkout(): void {
     this.workouts.push(this.workoutFormBuilder.buildWorkoutModelForm());
   }
 
   deleteWorkout(workoutIndex: number): void {
     this.workouts.removeAt(workoutIndex);
+  }
+
+  parseToWorkingSessionModel(value): WorkoutSessionModel {
+    return {
+      title:    value.title,
+      workouts: value.workouts.map((workout): WorkoutModel => ({
+        title:        workout.title,
+        seriesNumber: Number(workout.seriesNumber),
+        objectifs:    {
+          weight: Number(workout.objectifs.weight),
+          reps:   Number(workout.objectifs.reps),
+          rest:   Number(workout.objectifs.rest)
+        }
+      })),
+      comments: value.comments
+    } as WorkoutSessionModel
   }
 }

@@ -3,6 +3,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {AbstractGenericFieldComponents} from '../abstract-generic-field.components';
 
 export type GenericInputType = 'text' | 'number'
+
 @Component({
              selector:        ' app-generic-input-field',
              templateUrl:     './generic-input-field.component.html',
@@ -14,50 +15,6 @@ export type GenericInputType = 'text' | 'number'
                useExisting: GenericInputFieldComponent
              }]
            })
-export class GenericInputFieldComponent extends AbstractGenericFieldComponents{
-  // @Input() title?: string;
+export class GenericInputFieldComponent extends AbstractGenericFieldComponents {
   @Input() type: GenericInputType;
-
-  /*onChange  = (value) => {
-  };
-  onTouched = () => {
-  };
-  touched   = false;
-  disabled  = false;
-
-  form: FormControl;
-
-  constructor() {
-    this.form = new FormControl<string>(null);
-  }
-
-  writeValue(value): void {
-    this.form.setValue(value, {emitEvent: false});
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-  markAsTouched() {
-    if (!this.touched) {
-      this.onTouched();
-      this.touched = true;
-    }
-  }
-
-  getUserInput(): void {
-    this.markAsTouched();
-    if (!this.disabled) {
-      this.onChange(this.form.value);
-    }
-  }*/
 }

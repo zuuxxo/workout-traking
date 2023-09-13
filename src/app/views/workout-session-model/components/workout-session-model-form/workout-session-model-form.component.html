@@ -32,6 +32,6 @@
   </form>
   <mat-dialog-actions class="footer">
     <button mat-button color="primary" mat-dialog-close>Annuler</button>
-    <button mat-button color="primary" [mat-dialog-close]="form.value">Enregistrer</button>
+    <button mat-button color="primary" [mat-dialog-close]="parseToWorkingSessionModel(form.value)">Enregistrer</button>
   </mat-dialog-actions>
 </div>

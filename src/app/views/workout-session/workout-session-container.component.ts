@@ -22,17 +22,13 @@ export class WorkoutSessionContainerComponent {
               private headerFacade: HeaderFacadeService,
               private router: Router) {
     this.activeWorkoutSession$ = this.workoutSessionFacade.activeSession;
-    this.navigationsItems = this.headerFacade.getHeaderByView(ViewEnum.SESSION);
+    this.navigationsItems      = this.headerFacade.getHeaderByView(ViewEnum.SESSION);
   }
 
-  // TODO revoir probleme de perf
-  // TODO revoir l enregistremebt des nombres /les parser en number au lieu de string
-  // TODO clean les log et pb de perf
-  ngOnInit() {
-
-  }
-
-
+  // TODO revoir pour quoi les objectifs sont dans le workout actif du store , et du coup l integré dans la vue ?
+  // TODO integrer les autres elements de la vue workout sesssion
+  // TODO changer les input de type text en type text area
+  //  VOir le responsive
   navigationOnClick(item: ActionHeaderInterface | NavigationHeaderInterface) {
     if (item.key === 'NAVIGATION') {
       this.router.navigate([item.payload]);

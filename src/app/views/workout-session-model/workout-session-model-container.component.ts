@@ -23,10 +23,8 @@ import {ViewEnum} from "../../domain/features/header/view.enum";
            })
 export class WorkoutSessionModelContainerComponent {
   // TODO deplacer les facades dans les uses cases ? ou ailleurs pour les reuntiliser.
-  // TODO creer une interface a implementer pour les use case
   // creer la possibilité de creer un modele a partir d un entraienement deja realsies
   // creer une page pour gerer l affichage des entraienements realises
-  //  revoir les uses case et code base  du header  pas assez dry
   // TODO revoir le responsive de cette vue y compris la modal de formulaire
   // revoir UI et UX des boutons de gestion sur chaque model
 

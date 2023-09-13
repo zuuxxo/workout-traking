@@ -3,6 +3,7 @@ import {WorkoutSessionModel} from '../../model/workout-session-model';
 import {Injectable} from '@angular/core';
 import {workoutSessionModelActions} from '../../../data/store/actions/workout-session-model.actions';
 import {v4 as uuidv4} from 'uuid';
+import {WorkoutModel} from "../../model/workout-model";
 
 @Injectable({providedIn: 'root'})
 export class NewWorkoutSessionModelUseCase {
@@ -12,8 +13,13 @@ export class NewWorkoutSessionModelUseCase {
   }
 
   execute(model: WorkoutSessionModel): void {
-    const id           = uuidv4();
+    const id = uuidv4();
     const creationDate = new Date();
+/*    model.workouts.map((workout: WorkoutModel): WorkoutModel => ({
+      title:        workout.title,
+      seriesNumber: Number(workout.seriesNumber),
+      objectifs:    WorkoutModel.parseObjectifsInputToNumber(workout)
+    }))*/
     this.store.dispatch(workoutSessionModelActions.newModelSuccess({model: {...model, id, creationDate}}));
   }
 
